@@ -1,0 +1,18 @@
+# This is a THEME-ONLY repository. Never commit your whole Local WordPress installation.
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+wp-config.php
+wp-content/uploads/
+app/sql/
+*.sql
+*.sqlite
+*.sqlite3
+vendor/
+.idea/
+.vscode/
