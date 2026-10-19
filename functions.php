@@ -239,3 +239,17 @@ function klaben_enqueue_finance_assets(): void
     );
 }
 add_action('wp_enqueue_scripts', 'klaben_enqueue_finance_assets');
+
+
+/** Sprint 04 — Editorial archive + single WordPress posts. */
+function klaben_enqueue_news_assets(): void
+{
+    if (!is_page('nieuws') && !is_singular('post')) return;
+    wp_enqueue_style(
+        'klaben-news',
+        get_theme_file_uri('/assets/css/news.css'),
+        ['klaben-global'],
+        klaben_autos_asset_version('/assets/css/news.css')
+    );
+}
+add_action('wp_enqueue_scripts', 'klaben_enqueue_news_assets');
