@@ -45,7 +45,8 @@ $similar = array_values(array_filter(klaben_get_vehicles(), static fn ($candidat
                     <div><dt><?php echo esc_html($label); ?></dt><dd><?php echo esc_html((string) $value); ?></dd></div>
                 <?php endforeach; ?>
             </dl>
-            <a class="button button--primary vehicle-spec-panel__cta" href="<?php echo esc_url(home_url('/autos/')); ?>">← Bekijk alle auto’s</a>
+            <a class="button button--primary vehicle-spec-panel__cta" href="<?php echo esc_url(add_query_arg('auto', $car['slug'], home_url('/financiering/'))); ?>">Bereken maandbedrag ↗</a>
+            <a class="vehicle-finance-back" href="<?php echo esc_url(home_url('/autos/')); ?>">← Bekijk alle auto’s</a>
             <p class="vehicle-spec-panel__note">Dit project is een demonstratie van een fictieve autowebsite.</p>
         </aside>
     </div>

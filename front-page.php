@@ -145,7 +145,7 @@ $hero_image = get_theme_file_uri(
                     </p>
 
                     <p class="hero-stat__value">
-                        €359
+                        €565
                         <span>/mnd</span>
                     </p>
                 </div>
@@ -646,10 +646,10 @@ $hero_image = get_theme_file_uri(
                 </div>
 
                 <div class="finance-calculator__result">
-                    <span>Indicatie vanaf</span>
+                    <span>Rekenindicatie</span>
 
                     <p>
-                        € 459
+                        € 565
                         <small>per maand</small>
                     </p>
                 </div>

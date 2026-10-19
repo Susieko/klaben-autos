@@ -218,3 +218,24 @@ function klaben_handle_demo_vehicle_submission(): void
 }
 add_action('admin_post_klaben_demo_vehicle_submission', 'klaben_handle_demo_vehicle_submission');
 add_action('admin_post_nopriv_klaben_demo_vehicle_submission', 'klaben_handle_demo_vehicle_submission');
+
+
+/** Sprint 03 — Interactive financing demo, only on the financing page. */
+function klaben_enqueue_finance_assets(): void
+{
+    if (!is_page('financiering')) return;
+    wp_enqueue_style(
+        'klaben-finance',
+        get_theme_file_uri('/assets/css/finance.css'),
+        ['klaben-global'],
+        klaben_autos_asset_version('/assets/css/finance.css')
+    );
+    wp_enqueue_script(
+        'klaben-finance',
+        get_theme_file_uri('/assets/js/finance.js'),
+        ['klaben-main'],
+        klaben_autos_asset_version('/assets/js/finance.js'),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'klaben_enqueue_finance_assets');

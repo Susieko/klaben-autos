@@ -986,3 +986,5 @@
 .car-hover-image.is-changing {
     opacity: 0;
 }
+/* Sprint 03 — return navigation beneath vehicle financing CTA */
+.vehicle-finance-back{display:inline-flex;margin-top:15px;font-size:11px;color:#a6bdd0;text-decoration:none}.vehicle-finance-back:hover{text-decoration:underline}

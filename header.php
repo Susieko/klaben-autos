@@ -78,7 +78,7 @@
             </a>
 
             <a
-                class="site-nav__link"
+                class="site-nav__link <?php echo is_page('financiering') ? 'site-nav__link--active' : ''; ?>"
                 href="<?php echo esc_url(home_url('/financiering/')); ?>"
             >
                 Financiering
