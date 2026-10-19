@@ -35,7 +35,7 @@ sort($hero_fuels, SORT_NATURAL | SORT_FLAG_CASE);
 sort($hero_transmissions, SORT_NATURAL | SORT_FLAG_CASE);
 
 $hero_image = get_theme_file_uri(
-    '/assets/images/hero/klaben-background-layer.jpg'
+    '/assets/images/hero/klaben-background-v31.jpg'
 );
 $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer.png');
 
@@ -54,6 +54,15 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
         <img
             class="hero__ground"
             src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-ground-layer.png')); ?>"
+            alt=""
+            width="1672"
+            height="941"
+            decoding="async"
+        >
+        <!-- Contact shadows and a dim wet-floor reflection follow the scenery. -->
+        <img
+            class="hero__contact"
+            src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-contact-v31.png')); ?>"
             alt=""
             width="1672"
             height="941"
@@ -90,6 +99,15 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
                 >
             </div>
         </div>
+        <!-- Thin shared atmosphere passes IN FRONT of the lower bodywork. -->
+        <img
+            class="hero__front-haze"
+            src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-front-haze-v31.png')); ?>"
+            alt=""
+            width="1672"
+            height="941"
+            decoding="async"
+        >
         <div class="hero__spotlight"></div>
     </div>
     <div class="hero__inner container">

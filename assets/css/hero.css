@@ -1160,3 +1160,66 @@ body.home .site-footer {
     .hero--layered .hero__paint-sweep { display: none; }
     .hero--layered .hero-stat:nth-child(n) { opacity: 1; transform: none; }
 }
+
+
+/* ============================================================
+   KLABEN HERO V3.1 — ATMOSPHERIC BLEND (PREVIEW)
+   Preserve the original silver Mercedes PNG and V3 ignition.
+   New layers share the original 1672x941 scene coordinates.
+   ============================================================ */
+.hero--layered .hero__contact,
+.hero--layered .hero__front-haze {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+}
+/* Ground contact stays completely still even while the car enters. */
+.hero--layered .hero__contact {
+    z-index: 1;
+    opacity: .93;
+}
+/* Dim back the old neon-ish glow so it becomes reflected environmental light. */
+.hero--layered .hero__road-glow {
+    opacity: .27;
+    animation: klaben-road-integrated 1750ms 480ms ease-out both;
+}
+@keyframes klaben-road-integrated {
+    from { opacity: 0; }
+    70% { opacity: .32; }
+    to { opacity: .27; }
+}
+/* Keep the source car crisp: tiny colour/contrast grade, no blur. */
+.hero--layered .hero__car {
+    filter: saturate(.93) contrast(.975) brightness(.985)
+            drop-shadow(0 9px 11px rgba(4, 11, 17, .34));
+}
+/* Avoid applying brightness to the whole arriving scene after arrival. */
+.hero--layered .hero__front-haze {
+    z-index: 3;
+    opacity: .78;
+    mix-blend-mode: screen;
+}
+.hero--layered .hero__spotlight { z-index: 4; }
+/* The animated HUD and readable content remain above all scenic layers. */
+.hero--layered .hero__inner { position: relative; z-index: 5; }
+/* Retain the same canvas alignment on smaller devices. */
+@media (max-width: 900px) {
+    .hero--layered .hero__contact,
+    .hero--layered .hero__front-haze { object-position: 64% center; }
+    .hero--layered .hero__road-glow { animation: none; opacity: .18; }
+    .hero--layered .hero__front-haze { opacity: .58; }
+}
+@media (max-width: 650px) {
+    .hero--layered .hero__contact,
+    .hero--layered .hero__front-haze { object-position: 68% center; }
+    .hero--layered .hero__contact { opacity: .60; }
+    .hero--layered .hero__road-glow { opacity: .13; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero--layered .hero__road-glow { animation: none !important; opacity: .27; }
+}
