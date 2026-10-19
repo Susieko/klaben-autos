@@ -1,0 +1,57 @@
+/* KLABEN — homepage finance controls. Keeps the existing dark panel and typography. */
+.finance-section .klaben-finance-home-controls { display: grid; gap: 8px; margin: -5px 0 12px; }
+.finance-section .klaben-finance-home-label,
+.finance-section .klaben-finance-home-down-label,
+.finance-section .klaben-finance-home-terms legend {
+  color: #bdd0e1; font: 500 12px/1.4 var(--font-body, sans-serif);
+}
+.finance-section .klaben-finance-home-select {
+  display:block; width:100%; min-width:0; min-height:42px; padding:10px 36px 10px 13px;
+  background: #152538; color: #f2f7fc; border: 1px solid rgba(165,193,216,.30);
+  border-radius:9px; font:500 12px/1.4 var(--font-body, sans-serif);
+  cursor:pointer; color-scheme:dark;
+}
+.finance-section .klaben-finance-home-down-label { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:7px; }
+.finance-section .klaben-finance-home-down-label label { cursor:pointer; }
+.finance-section #klaben-home-down-output { color:#fff; font:600 13px/1.4 var(--font-heading,sans-serif); font-variant-numeric:tabular-nums; }
+.finance-section #klaben-home-down { display:block; width:100%; height:20px; margin:0; background:transparent; accent-color:#8db8df; cursor:pointer; }
+.finance-section .klaben-finance-home-range-ends { display:flex; justify-content:space-between; color:#8ca7be; font-size:10px; line-height:1.3; margin-top:-4px; }
+.finance-section .klaben-finance-home-terms { min-width:0; margin:10px 0 0; padding:0; border:0; }
+.finance-section .klaben-finance-home-terms legend { margin:0 0 9px; padding:0; }
+.finance-section .klaben-finance-home-term-options { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; }
+.finance-section .klaben-finance-home-term-options label { position:relative; display:block; cursor:pointer; min-width:0; }
+.finance-section .klaben-finance-home-term-options input { position:absolute; width:1px; height:1px; opacity:0; }
+.finance-section .klaben-finance-home-term-options span {
+  display:grid; place-items:center; min-height:38px; padding:7px 2px; border:1px solid rgba(152,184,212,.23);
+  border-radius:8px; background:rgba(17,32,46,.67); color:#b3c7d8; font-size:11px; line-height:1.3;
+  white-space:nowrap; transition:background .2s ease, border-color .2s ease, color .2s ease;
+}
+.finance-section .klaben-finance-home-term-options input:checked + span { border-color:#87aace; background:#294766; color:#fff; }
+.finance-section .klaben-finance-home-term-options label:hover span { border-color:#a6c3df; }
+.finance-section .klaben-finance-home-term-options input:focus-visible + span,
+.finance-section .klaben-finance-home-select:focus-visible,
+.finance-section #klaben-home-down:focus-visible { outline:2px solid #c7e3ff; outline-offset:3px; }
+.finance-section .klaben-finance-home-rate { margin:4px 0 0; color:#8fa6ba; font-size:10px; line-height:1.5; }
+.finance-section .klaben-finance-home-static-term { display:none; }
+.finance-section .finance-calculator__result { margin-top:16px; }
+.finance-section .klaben-finance-home-number { font-variant-numeric:tabular-nums; }
+.finance-section .finance-calculator__result p { align-items:baseline; }
+.finance-section .finance-calculator__notice { font-size:10px; line-height:1.55; }
+@media (max-width:650px) {
+  .finance-section .klaben-finance-home-controls { margin-top:0; }
+  .finance-section .finance-calculator__result p { flex-direction:row; flex-wrap:wrap; align-items:baseline; }
+  .finance-section .klaben-finance-home-term-options { gap:4px; }
+  .finance-section .klaben-finance-home-term-options span { font-size:10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .finance-section .klaben-finance-home-term-options span { transition:none; }
+}
+
+/* Keep native controls from forcing the existing mobile grid wider. */
+.finance-section .finance-calculator { min-width:0; width:100%; max-width:100%; box-sizing:border-box; }
+.finance-section .klaben-finance-home-sr-only {
+  position:absolute !important; width:1px !important; height:1px !important; padding:0 !important;
+  margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important; border:0 !important;
+}
+@media (max-width:950px) { .finance-section .finance-panel { grid-template-columns:minmax(0,1fr); } }

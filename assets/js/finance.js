@@ -23,12 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
     barLoan: root.querySelector("[data-finance-bar-loan]")
   };
 
-  // Illustrative nominal yearly interest, not an advertised APR or offer.
-  const NOMINAL_ANNUAL_RATE = 0.079;
-  const euro = (amount, digits = 0) => new Intl.NumberFormat("nl-NL", {
-    style: "currency", currency: "EUR", minimumFractionDigits: digits,
-    maximumFractionDigits: digits
-  }).format(amount);
+  // Same shared formula as the homepage mini calculator.
+  const finance = window.KlabenFinance;
+  if (!finance) return;
+  const euro = finance.euro;
 
   function update() {
     const price = Number(priceInput.value);
@@ -50,12 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const principal = price - down;
-    const monthlyRate = NOMINAL_ANNUAL_RATE / 12;
-    const monthly = principal === 0 ? 0 :
-      principal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
-    const total = monthly * months;
-    const interest = Math.max(0, total - principal);
+    const { principal, monthly, total, interest } = finance.calculate({ price, down, months });
     fields.monthly.textContent = euro(monthly, 2);
     fields.price.textContent = euro(price);
     fields.down.textContent = euro(down);
