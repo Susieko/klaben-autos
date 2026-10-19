@@ -402,3 +402,142 @@ body.home .site-nav__link::after {
         top: 76px;
     }
 }
+
+/* ============================================================
+   KLABEN — ALLOY WHEEL NAVIGATION V2 (PREVIEW)
+   A clear current-page pill with a single five-spoke wheel.
+   The wheel spins once on pointer hover or keyboard focus.
+   ============================================================ */
+
+/* Hide old underline in every state. */
+.site-nav__link::after,
+.site-nav__link:hover::after,
+.site-nav__link--active::after,
+.site-nav__link:focus-visible::after {
+    content: none;
+    display: none;
+}
+
+@media (min-width: 901px) {
+    .site-nav,
+    body.home .site-nav {
+        gap: clamp(6px, .65vw, 12px);
+    }
+}
+
+.site-nav__link,
+body.home .site-nav__link {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 42px;
+    padding: 10px 13px 10px 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-soft);
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 1.25;
+    transition: color 180ms ease, background-color 180ms ease,
+                border-color 180ms ease, box-shadow 180ms ease;
+}
+.site-nav__link:visited { color: var(--color-text-soft); }
+.site-nav__link--active,
+.site-nav__link--active:visited {
+    color: #e7f2ff;
+    font-weight: 650;
+    background: rgba(107, 148, 188, .15);
+    border-color: rgba(164, 194, 224, .26);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+.site-nav__link:hover,
+.site-nav__link:hover:visited,
+.site-nav__link:focus-visible {
+    color: #f4f9ff;
+    background: rgba(115, 155, 197, .11);
+    border-color: rgba(163, 191, 219, .20);
+}
+.site-nav__link:focus-visible {
+    outline: 2px solid #a6c8e7;
+    outline-offset: 2px;
+}
+
+/* Fixed wheel slot: links stay aligned while their wheels appear. */
+.site-nav__wheel {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: translateY(-50%) scale(.83);
+    transition: opacity 180ms ease, transform 180ms ease;
+    pointer-events: none;
+}
+.site-nav__wheel-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: 50% 50%;
+}
+.site-nav__link--active .site-nav__wheel,
+.site-nav__link:hover .site-nav__wheel,
+.site-nav__link:focus-visible .site-nav__wheel {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+/* When previewing another link, show just ONE wheel: the hovered one.
+   The current page keeps its blue-grey selected pill. */
+@media (hover: hover) and (pointer: fine) {
+    .site-nav:has(.site-nav__link:not(.site-nav__link--active):hover)
+    .site-nav__link--active .site-nav__wheel {
+        opacity: 0;
+        transform: translateY(-50%) scale(.83);
+    }
+}
+.site-nav:has(.site-nav__link:not(.site-nav__link--active):focus-visible)
+.site-nav__link--active .site-nav__wheel {
+    opacity: 0;
+    transform: translateY(-50%) scale(.83);
+}
+
+/* One spin on entry, not a perpetual loop. */
+@media (hover: hover) and (pointer: fine) {
+    .site-nav__link:hover .site-nav__wheel-svg {
+        animation: klaben-wheel-roll 720ms cubic-bezier(.18,.78,.23,1) both;
+    }
+}
+.site-nav__link:focus-visible .site-nav__wheel-svg {
+    animation: klaben-wheel-roll 720ms cubic-bezier(.18,.78,.23,1) both;
+}
+@keyframes klaben-wheel-roll {
+    0% { transform: rotate(0); }
+    78% { transform: rotate(380deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+    .site-nav__link,
+    body.home .site-nav__link {
+        width: 100%;
+        min-height: 49px;
+        justify-content: flex-start;
+        margin: 0;
+        padding: 13px 14px 13px 42px;
+        border-radius: 9px;
+        border-bottom: 1px solid rgba(181,198,218,.12);
+    }
+    .site-nav__wheel { left: 14px; }
+    .site-nav__link:last-child { border-bottom-color: transparent; }
+    .site-nav__link--active { border-color: rgba(164, 194, 224, .26); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .site-nav__link,
+    .site-nav__wheel,
+    .site-nav__wheel-svg { transition: none !important; animation: none !important; }
+}

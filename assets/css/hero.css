@@ -1201,7 +1201,7 @@ body.home .site-footer {
 /* Avoid applying brightness to the whole arriving scene after arrival. */
 .hero--layered .hero__front-haze {
     z-index: 3;
-    opacity: .78;
+    opacity: .60;
     mix-blend-mode: screen;
 }
 .hero--layered .hero__spotlight { z-index: 4; }
@@ -1212,7 +1212,7 @@ body.home .site-footer {
     .hero--layered .hero__contact,
     .hero--layered .hero__front-haze { object-position: 64% center; }
     .hero--layered .hero__road-glow { animation: none; opacity: .18; }
-    .hero--layered .hero__front-haze { opacity: .58; }
+    .hero--layered .hero__front-haze { opacity: .48; }
 }
 @media (max-width: 650px) {
     .hero--layered .hero__contact,
@@ -1222,4 +1222,92 @@ body.home .site-footer {
 }
 @media (prefers-reduced-motion: reduce) {
     .hero--layered .hero__road-glow { animation: none !important; opacity: .27; }
+}
+
+
+/* ============================================================
+   KLABEN HERO V3.2 — BACKGROUND CLARITY PASS (PREVIEW)
+   Restores more environmental detail so the Mercedes feels embedded.
+   ============================================================ */
+.hero--layered {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(8, 15, 22, 0.90) 0%,
+            rgba(8, 15, 22, 0.60) 35%,
+            rgba(8, 15, 22, 0.12) 69%,
+            rgba(8, 15, 22, 0.06) 100%
+        ),
+        var(--hero-image);
+}
+.hero--layered .hero__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 67% 54%, rgba(178, 201, 224, .10), transparent 46%),
+        linear-gradient(180deg, rgba(7, 14, 21, 0) 58%, rgba(7, 14, 21, .10) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+@media (max-width: 900px) {
+    .hero--layered .hero__front-haze { opacity: .42; }
+}
+@media (max-width: 650px) {
+    .hero--layered .hero__front-haze { opacity: .34; }
+}
+
+
+/* ============================================================
+   KLABEN HERO V3.3 — COLOR BLEND PASS (PREVIEW)
+   No extra background blur. Keep the scene clear and blend the
+   Mercedes with tone, shadow and reflection instead.
+   ============================================================ */
+.hero--layered .hero__front-haze {
+    display: none;
+}
+.hero--layered .hero__road-glow {
+    opacity: .08;
+    animation: klaben-road-soften 1600ms 420ms ease-out both;
+}
+@keyframes klaben-road-soften {
+    from { opacity: 0; }
+    60% { opacity: .11; }
+    to { opacity: .08; }
+}
+.hero--layered .hero__contact {
+    opacity: 1;
+}
+.hero--layered .hero__car {
+    filter: saturate(.89) contrast(.955) brightness(.98) hue-rotate(2deg)
+            drop-shadow(0 10px 12px rgba(5, 12, 19, .34));
+}
+/* A faint environmental wash helps the car inherit more of the scene colour. */
+.hero--layered .hero__vehicle-arrival::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 66% 58%, rgba(122, 147, 176, .12), transparent 40%),
+        radial-gradient(ellipse at 58% 48%, rgba(171, 192, 219, .06), transparent 30%);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+.hero--layered .hero__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(7, 14, 21, 0) 62%, rgba(7, 14, 21, .06) 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+@media (max-width: 900px) {
+    .hero--layered .hero__road-glow { opacity: .06; animation: none; }
+}
+@media (max-width: 650px) {
+    .hero--layered .hero__road-glow { opacity: .04; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero--layered .hero__road-glow { animation: none !important; opacity: .08; }
 }

@@ -35,7 +35,7 @@ sort($hero_fuels, SORT_NATURAL | SORT_FLAG_CASE);
 sort($hero_transmissions, SORT_NATURAL | SORT_FLAG_CASE);
 
 $hero_image = get_theme_file_uri(
-    '/assets/images/hero/klaben-background-v31.jpg'
+    '/assets/images/hero/klaben-background-v32.png'
 );
 $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer.png');
 
