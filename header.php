@@ -65,9 +65,6 @@
             >
                 Auto’s
 
-                <span class="site-nav__arrow" aria-hidden="true">
-                    ▾
-                </span>
             </a>
 
             <a

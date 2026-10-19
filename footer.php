@@ -81,7 +81,7 @@
                 >
                     <a href="<?php echo esc_url(
                         add_query_arg(
-                            'type',
+                            'carrosserie',
                             'sedan',
                             home_url('/autos/')
                         )
@@ -91,7 +91,7 @@
 
                     <a href="<?php echo esc_url(
                         add_query_arg(
-                            'type',
+                            'carrosserie',
                             'hatchback',
                             home_url('/autos/')
                         )
@@ -101,7 +101,7 @@
 
                     <a href="<?php echo esc_url(
                         add_query_arg(
-                            'type',
+                            'carrosserie',
                             'cabriolet',
                             home_url('/autos/')
                         )
@@ -128,85 +128,12 @@
                     Tilburg, Nederland
                 </p>
 
-                <a href="mailto:info@klaben-autos.nl">
-                    info@klaben-autos.nl
-                </a>
-
-                <div class="site-footer__socials">
-
-                    <a
-                        href="#"
-                        aria-label="Instagram"
-                    >
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <rect
-                                x="3"
-                                y="3"
-                                width="18"
-                                height="18"
-                                rx="5"
-                            ></rect>
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="4"
-                            ></circle>
-
-                            <circle
-                                cx="17.5"
-                                cy="6.5"
-                                r="1"
-                                fill="currentColor"
-                                stroke="none"
-                            ></circle>
-                        </svg>
-                    </a>
-
-                    <a
-                        href="#"
-                        aria-label="Facebook"
-                    >
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"
-                            ></path>
-                        </svg>
-                    </a>
-
-                    <a
-                        href="#"
-                        aria-label="Pinterest"
-                    >
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="9"
-                            ></circle>
-
-                            <path
-                                d="M9.5 18l1.2-5.2c-.8-1.4-.1-4.3 2.1-4.3 1.6 0 2.2 1.2 2.2 2.6 0 1.6-1 4-2.5 4-.8 0-1.4-.7-1.2-1.5"
-                            ></path>
-                        </svg>
-                    </a>
-
+                <div class="site-footer__concept" aria-label="Dit is een portfolio-demo">
+                    <span class="site-footer__concept-mark" aria-hidden="true">K</span>
+                    <span><strong>CONCEPT SHOWROOM</strong><small>Fictief portfolio-project · Geen echte verkoop</small></span>
                 </div>
+
+            </div>
 
             </div>
 
@@ -222,13 +149,6 @@
             </p>
 
             <div class="site-footer__legal">
-                <a href="#">
-                    Privacy
-                </a>
-
-                <a href="#">
-                    Voorwaarden
-                </a>
 
                 <span>
                     Ontworpen als persoonlijk conceptproject

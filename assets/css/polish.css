@@ -1,0 +1,113 @@
+/*
+ * KLABEN AUTOS · VISUAL POLISH PREVIEW
+ * A small, reversible layer loaded after the current theme styles.
+ * Purpose: unify focus/hover, create premium light detail, improve mobile usability.
+ */
+
+/* Navigation and in-page destinations stay visible under the sticky header. */
+html { scroll-padding-top: 104px; }
+[id="uitgelicht"], [id="werkwijze"], [id="verhalen"], [id="calculator"],
+[id="verkoopformulier"], [id="financiering"] { scroll-margin-top: 108px; }
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid #a7c8e9;
+  outline-offset: 4px;
+}
+
+/* The original hero illustration remains untouched: add just a subtle, cursor-lit haze. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .53;
+  background: radial-gradient(ellipse 350px 240px at var(--klaben-glow-x, 73%) var(--klaben-glow-y, 48%),
+    rgba(153, 190, 229, .12), rgba(96, 131, 176, .045) 44%, transparent 75%);
+}
+.hero__inner { z-index: 1; }
+
+/* Automotive "light sweep": small shine on hover/focus, not a moving carousel. */
+.car-card__image-link::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -15%; bottom: -15%;
+  left: -72%; width: 32%;
+  transform: skewX(-24deg);
+  background: linear-gradient(90deg, transparent 0%, rgba(223, 238, 255, .16) 48%, transparent 100%);
+  transition: left .75s cubic-bezier(.2,.7,.25,1);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .car-card:hover .car-card__image-link::before,
+  .car-card:focus-within .car-card__image-link::before { left: 150%; }
+}
+
+/* More intentional selection on keyboard and a softer lift across the catalogue. */
+.car-card:focus-within, .news-card:focus-within {
+  border-color: rgba(165, 201, 234, .54);
+  box-shadow: 0 24px 55px rgba(0,0,0,.26), 0 0 0 1px rgba(151,187,221,.16);
+}
+.car-card__price, .vehicle-headline__price strong, .finance-result__figure strong { font-variant-numeric: tabular-nums; }
+
+/* Progressive, intersection-triggered entrance. Without JS, these classes are never applied. */
+.klaben-can-reveal { opacity: 0; }
+.klaben-can-reveal.klaben-in-view {
+  opacity: 1;
+  animation: klaben-arrive .64s var(--klaben-delay, 0ms) cubic-bezier(.2,.75,.2,1) backwards;
+}
+@keyframes klaben-arrive {
+  from { opacity: 0; transform: translate3d(0, 17px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Footer is a portfolio showroom, not a site with placeholder social accounts. */
+.site-footer__concept {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 23px;
+  padding: 11px 15px 11px 11px;
+  border: 1px solid rgba(170,194,219,.17);
+  border-radius: 12px;
+  background: rgba(132,167,202,.045);
+}
+.site-footer__concept-mark {
+  display: grid;
+  place-items: center;
+  width: 35px; height: 35px;
+  flex: none;
+  border-radius: 9px;
+  border: 1px solid rgba(178,208,238,.25);
+  color: #d7e8f8;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+}
+.site-footer__concept strong, .site-footer__concept small { display: block; }
+.site-footer__concept strong { color: #d8e8f7; font-size: 9px; letter-spacing: .12em; }
+.site-footer__concept small { margin-top: 5px; color: #91a4b8; font-size: 10px; line-height: 1.5; }
+
+/* Touch ergonomics and mid-sized laptop refinements. */
+@media (max-width: 900px) {
+  .site-nav.is-open { overflow-y: auto; max-height: min(75dvh, 520px); }
+  .site-nav__link { min-height: 48px; }
+  .menu-toggle { touch-action: manipulation; }
+}
+@media (max-width: 650px) {
+  html { scroll-padding-top: 90px; }
+  .container { width: min(var(--container-width), calc(100% - 34px)); }
+  .site-footer__top { padding-top: 54px; }
+  .car-card__favourite { min-width: 44px; min-height: 44px; }
+  .vehicle-thumb { min-width: 44px; min-height: 44px; }
+}
+@media (max-width: 380px) {
+  .container { width: calc(100% - 28px); }
+  .site-footer__concept { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { display: none; }
+  .klaben-can-reveal, .klaben-can-reveal.klaben-in-view { opacity: 1; animation: none !important; }
+  .car-card__image-link::before { display: none; }
+}

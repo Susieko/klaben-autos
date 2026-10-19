@@ -253,3 +253,23 @@ function klaben_enqueue_news_assets(): void
     );
 }
 add_action('wp_enqueue_scripts', 'klaben_enqueue_news_assets');
+
+
+/** Visual polish preview: a reversible layer, without touching the existing page templates. */
+function klaben_enqueue_visual_polish(): void
+{
+    wp_enqueue_style(
+        'klaben-polish',
+        get_theme_file_uri('/assets/css/polish.css'),
+        ['klaben-header', 'klaben-cars', 'klaben-responsive'],
+        klaben_autos_asset_version('/assets/css/polish.css')
+    );
+    wp_enqueue_script(
+        'klaben-polish',
+        get_theme_file_uri('/assets/js/polish.js'),
+        ['klaben-main'],
+        klaben_autos_asset_version('/assets/js/polish.js'),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'klaben_enqueue_visual_polish', 50);
