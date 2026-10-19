@@ -9,6 +9,15 @@ wp_enqueue_script(
     true
 );
 
+wp_enqueue_style(
+    'klaben-process',
+    get_theme_file_uri('/assets/css/process.css'),
+    ['klaben-cars'],
+    (string) filemtime(
+        get_theme_file_path('/assets/css/process.css')
+    )
+);
+
 get_header();
 
 $cars = require get_theme_file_path('/data/cars.php');
@@ -45,7 +54,7 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
     class="hero hero--layered"
     style="--hero-image: url('<?php echo esc_url($hero_image); ?>');"
 >
-    <!-- Layers use the same canvas proportions so the car aligns with the scene. -->
+    <!-- Layers use the same canvGITas proportions so the car aligns with the scene. -->
     <div
         class="hero__visual"
         style="--klaben-car-mask: url('<?php echo esc_url($hero_car_cutout); ?>');"
@@ -140,12 +149,12 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
 
                 <a
                     class="button button--secondary"
-                    href="#werkwijze"
+                    href="#waarom-klaben"
                 >
                     Zo werkt het
 
                     <span class="hero__play" aria-hidden="true">
-                        ▶
+                      ↓
                     </span>
                 </a>
 
@@ -549,6 +558,8 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
 
     </div>
 </section>
+
+<?php get_template_part('template-parts/klaben-process'); ?>
 
 <section class="featured-cars reveal" id="uitgelicht">
 
