@@ -44,8 +44,8 @@ $klaben_process_steps = [
 
         <ol class="klaben-process__grid" aria-label="Drie stappen naar jouw volgende occasion">
             <?php foreach ($klaben_process_steps as $index => $step): ?>
-                <li class="klaben-process__step reveal" style="--reveal-delay: <?php echo esc_attr((string) ($index * 110)); ?>ms;">
-                    <article class="klaben-process__card">
+                <li class="klaben-process__step klaben-process__step--<?php echo esc_attr(sanitize_title($step['stage'])); ?> reveal" style="--reveal-delay: <?php echo esc_attr((string) ($index * 110)); ?>ms;">
+                    <article class="klaben-process__card" tabindex="0">
                         <div class="klaben-process__copy">
                             <p class="klaben-process__stage">
                                 <span class="klaben-process__index"><?php echo esc_html($step['number']); ?></span>
@@ -55,6 +55,8 @@ $klaben_process_steps = [
                             <p class="klaben-process__description"><?php echo esc_html($step['description']); ?></p>
                         </div>
                         <div class="klaben-process__media" aria-hidden="true">
+                            <span class="klaben-process__effect" aria-hidden="true"></span>
+                            <span class="klaben-process__effect-secondary" aria-hidden="true"></span>
                             <img
                                 src="<?php echo esc_url(get_theme_file_uri('/assets/images/process/' . $step['image'])); ?>"
                                 alt=""

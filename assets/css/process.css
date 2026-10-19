@@ -213,3 +213,163 @@
     .klaben-process__card, .klaben-process__media img, .klaben-process__footnote a span { transition: none !important; }
     .klaben-process__card:hover { transform: none; }
 }
+
+
+/* ============================================================
+   KLABEN Autos — Process Interactions
+   Automotive hover details for the 3-step journey.
+   ============================================================ */
+.klaben-process__step { --route-accent: rgba(157, 196, 229, .74); }
+.klaben-process__step::after {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: 28px;
+    width: calc(100% - 38px);
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(157, 196, 229, .85), rgba(157, 196, 229, .18) 68%, transparent 100%);
+    transform: scaleX(0);
+    transform-origin: left center;
+    opacity: 0;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1), opacity .3s ease;
+}
+.klaben-process__card {
+    outline: none;
+}
+.klaben-process__card:focus-visible {
+    border-color: rgba(176, 212, 243, .42);
+    box-shadow: 0 0 0 3px rgba(108, 158, 208, .18), 0 24px 45px rgba(0, 0, 0, .28);
+}
+.klaben-process__media {
+    isolation: isolate;
+}
+.klaben-process__effect,
+.klaben-process__effect-secondary {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .35s ease, transform .6s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+}
+/* Step-specific effects */
+.klaben-process__step--ontdek .klaben-process__effect {
+    background:
+        radial-gradient(circle at 83% 55%, rgba(248,252,255,.96) 0%, rgba(201,226,255,.82) 7%, rgba(144,190,234,.42) 12%, rgba(144,190,234,0) 23%),
+        radial-gradient(circle at 76% 55%, rgba(136,190,240,.32) 0%, rgba(136,190,240,0) 21%);
+    mix-blend-mode: screen;
+    transform: scale(.96);
+    filter: blur(0px);
+}
+.klaben-process__step--ontdek .klaben-process__effect-secondary {
+    background: linear-gradient(102deg, transparent 35%, rgba(177, 216, 249, .09) 48%, rgba(255,255,255,.28) 52%, rgba(177,216,249,.08) 56%, transparent 67%);
+    transform: translateX(-14%);
+    mix-blend-mode: screen;
+}
+.klaben-process__step--ervaar .klaben-process__effect {
+    background:
+        radial-gradient(ellipse at 68% 48%, rgba(97, 156, 224, .55), rgba(97,156,224,0) 34%),
+        radial-gradient(ellipse at 49% 71%, rgba(86, 144, 210, .38), rgba(86,144,210,0) 27%);
+    mix-blend-mode: screen;
+}
+.klaben-process__step--ervaar .klaben-process__effect-secondary {
+    background: linear-gradient(95deg, transparent 26%, rgba(122,174,235,.24) 45%, rgba(200,229,255,.12) 54%, transparent 70%);
+    transform: translateX(-18%);
+    mix-blend-mode: screen;
+}
+.klaben-process__step--rijd .klaben-process__effect {
+    background:
+        radial-gradient(circle at 77% 58%, rgba(255, 88, 88, .58), rgba(255, 88, 88, 0) 15%),
+        radial-gradient(circle at 74% 58%, rgba(255, 164, 120, .28), rgba(255,164,120,0) 24%),
+        linear-gradient(90deg, transparent 60%, rgba(255, 109, 109, .08) 76%, transparent 100%);
+    mix-blend-mode: screen;
+}
+.klaben-process__step--rijd .klaben-process__effect-secondary {
+    background: linear-gradient(0deg, rgba(255, 113, 113, .04), transparent 44%);
+}
+@media (hover: hover) and (pointer: fine) {
+    .klaben-process__step:hover::before,
+    .klaben-process__step:focus-within::before,
+    .klaben-process__card:focus-visible + * {
+        box-shadow: 0 0 0 6px #0e1d2c, 0 0 22px rgba(135, 189, 235, .56);
+        background: #d7ebff;
+    }
+    .klaben-process__step:hover::after,
+    .klaben-process__step:focus-within::after,
+    .klaben-process__step:has(.klaben-process__card:focus-visible)::after {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+    .klaben-process__step:hover .klaben-process__effect,
+    .klaben-process__step:hover .klaben-process__effect-secondary,
+    .klaben-process__step:focus-within .klaben-process__effect,
+    .klaben-process__step:focus-within .klaben-process__effect-secondary,
+    .klaben-process__step:has(.klaben-process__card:focus-visible) .klaben-process__effect,
+    .klaben-process__step:has(.klaben-process__card:focus-visible) .klaben-process__effect-secondary {
+        opacity: 1;
+    }
+    .klaben-process__step:hover .klaben-process__step--dummy { opacity:1; }
+    .klaben-process__step--ontdek:hover .klaben-process__effect,
+    .klaben-process__step--ontdek:focus-within .klaben-process__effect,
+    .klaben-process__step--ontdek:has(.klaben-process__card:focus-visible) .klaben-process__effect {
+        animation: klaben-headlight-ignite .85s ease-out both;
+    }
+    .klaben-process__step--ontdek:hover .klaben-process__effect-secondary,
+    .klaben-process__step--ontdek:focus-within .klaben-process__effect-secondary,
+    .klaben-process__step--ontdek:has(.klaben-process__card:focus-visible) .klaben-process__effect-secondary {
+        opacity: .95;
+        transform: translateX(6%);
+        transition-duration: .72s;
+    }
+    .klaben-process__step--ervaar:hover .klaben-process__effect,
+    .klaben-process__step--ervaar:focus-within .klaben-process__effect,
+    .klaben-process__step--ervaar:has(.klaben-process__card:focus-visible) .klaben-process__effect {
+        opacity: .92;
+        animation: klaben-dashboard-ambience 1s ease-out both;
+    }
+    .klaben-process__step--ervaar:hover .klaben-process__effect-secondary,
+    .klaben-process__step--ervaar:focus-within .klaben-process__effect-secondary,
+    .klaben-process__step--ervaar:has(.klaben-process__card:focus-visible) .klaben-process__effect-secondary {
+        opacity: .88;
+        transform: translateX(5%);
+    }
+    .klaben-process__step--rijd:hover .klaben-process__effect,
+    .klaben-process__step--rijd:focus-within .klaben-process__effect,
+    .klaben-process__step--rijd:has(.klaben-process__card:focus-visible) .klaben-process__effect {
+        animation: klaben-taillight-awaken .8s ease-out both;
+    }
+    .klaben-process__step--rijd:hover .klaben-process__effect-secondary,
+    .klaben-process__step--rijd:focus-within .klaben-process__effect-secondary,
+    .klaben-process__step--rijd:has(.klaben-process__card:focus-visible) .klaben-process__effect-secondary {
+        opacity: .8;
+    }
+    .klaben-process__step--rijd:hover img,
+    .klaben-process__step--rijd:focus-within img,
+    .klaben-process__step--rijd:has(.klaben-process__card:focus-visible) img {
+        transform: scale(1.07) translateX(6px);
+    }
+}
+@keyframes klaben-headlight-ignite {
+    0% { opacity: 0; transform: scale(.92); }
+    40% { opacity: 1; transform: scale(1.04); }
+    100% { opacity: .92; transform: scale(1); }
+}
+@keyframes klaben-dashboard-ambience {
+    0% { opacity: 0; filter: saturate(.85); }
+    38% { opacity: .96; filter: saturate(1.12); }
+    100% { opacity: .84; filter: saturate(1); }
+}
+@keyframes klaben-taillight-awaken {
+    0% { opacity: 0; transform: scale(.96); }
+    25% { opacity: .88; }
+    60% { opacity: 1; }
+    100% { opacity: .92; transform: scale(1); }
+}
+@media (max-width: 900px) {
+    .klaben-process__effect, .klaben-process__effect-secondary { display: none; }
+    .klaben-process__step::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .klaben-process__effect, .klaben-process__effect-secondary, .klaben-process__step::after { transition: none !important; animation: none !important; }
+}
