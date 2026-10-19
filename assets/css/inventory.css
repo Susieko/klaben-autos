@@ -94,3 +94,318 @@
 @media (max-width:700px) { .inventory-heading__inner {padding-block:65px 68px;} .inventory-heading__stamp {display:none;} .inventory-section {padding:35px 0 80px;} .inventory-sidebar {padding:21px 17px;} .inventory-form {grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;} .inventory-form>.inventory-field:first-child {grid-column:1/-1;} .inventory-fields-two {grid-column:1/-1;} .inventory-submit {grid-column:1/-1;} .inventory-reset {grid-column:1/-1;} .inventory-toolbar {align-items:flex-start;flex-direction:column;} .inventory-grid {grid-template-columns:1fr;} .inventory-grid .car-card__image-link {height:230px;} .inventory-sort-form {width:100%;} .vehicle-breadcrumb {margin-bottom:27px;} .vehicle-headline {align-items:start;flex-direction:column;} .vehicle-headline__price {text-align:left;} .vehicle-view {padding-bottom:80px;} .vehicle-spec-panel {padding:23px;} .vehicle-related__heading {align-items:start;flex-direction:column;} }
 @media (max-width:380px) { .inventory-form {grid-template-columns:1fr;} .inventory-fields-two {grid-template-columns:1fr;} .vehicle-thumbs {gap:6px;} .vehicle-gallery__badge {top:9px;left:9px;} }
 @media (prefers-reduced-motion: reduce) { .vehicle-thumb,.inventory-heading * {animation:none!important;transition:none!important;} }
+
+
+/* ========================================================
+   KLABEN Autos · Showroom header V1 (Alle auto's only)
+   Image-backed interior-page hero; no JS, no blur or cursor glow.
+   ======================================================== */
+.inventory-heading {
+    isolation: isolate;
+    background: #091522;
+}
+.inventory-heading::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: url('../images/hero/showroom-hero.webp') center 48% / cover no-repeat;
+    pointer-events: none;
+}
+.inventory-heading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: linear-gradient(90deg,
+        rgba(5,16,28,.95) 0%,
+        rgba(5,16,28,.81) 27%,
+        rgba(5,16,28,.43) 52%,
+        rgba(5,16,28,.07) 83%,
+        rgba(5,16,28,.13) 100%
+    ), linear-gradient(0deg, rgba(5,16,28,.34) 0%, transparent 31%);
+    pointer-events: none;
+}
+.inventory-heading__inner {
+    min-height: 330px;
+    align-items: stretch;
+    padding-block: 38px 34px;
+    gap: 24px;
+}
+.inventory-heading__copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    width: min(100%, 690px);
+}
+.inventory-heading .inventory-eyebrow {
+    margin-bottom: 14px;
+    color: #b2cae2;
+    letter-spacing: .19em;
+}
+.inventory-heading h1 {
+    max-width: 580px;
+    margin-bottom: 14px;
+    font-size: clamp(38px, 4.3vw, 60px);
+    line-height: 1.08;
+    text-wrap: balance;
+}
+.inventory-heading__copy > p:not(.inventory-eyebrow) {
+    margin: 0;
+    max-width: 490px;
+    font-size: 13px;
+    line-height: 1.77;
+    color: #bdcedf;
+}
+.inventory-heading__perks {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 26px;
+    margin: 27px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.inventory-heading__perk {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 9px;
+}
+.inventory-heading__perk svg {
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
+    color: #90b4d7;
+}
+.inventory-heading__perk span { display: grid; gap: 3px; }
+.inventory-heading__perk strong {
+    color: #f1f6fa;
+    font: 600 10.5px/1.3 var(--font-body, Inter, sans-serif);
+    white-space: nowrap;
+}
+.inventory-heading__perk small {
+    color: #a5bed2;
+    font: 400 10px/1.3 var(--font-body, Inter, sans-serif);
+    white-space: nowrap;
+}
+.inventory-heading__stamp {
+    align-self: flex-end;
+    margin-bottom: 4px;
+    padding: 15px 18px;
+    border-color: rgba(192,217,236,.20);
+    background: rgba(10,24,39,.76);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+}
+.inventory-heading__stamp strong { font-size: 43px; }
+.inventory-heading__stamp span { font-size: 9px; }
+.inventory-section { padding-top: 48px; }
+@media (max-width: 1120px) {
+    .inventory-heading__inner { min-height: 360px; }
+    .inventory-heading__copy { width: min(100%, 630px); }
+    .inventory-heading__perks { max-width: 610px; gap: 15px 18px; }
+    .inventory-heading__perk strong { font-size: 10px; }
+}
+@media (max-width: 950px) {
+    .inventory-heading::before { background-position: 63% 48%; }
+    .inventory-heading::after {
+        background: linear-gradient(90deg,rgba(5,16,28,.97),rgba(5,16,28,.80) 55%,rgba(5,16,28,.43));
+    }
+    .inventory-heading__inner { min-height: 365px; padding-block: 42px 37px; }
+    .inventory-heading__copy { max-width: 620px; }
+    .inventory-heading__stamp { padding: 12px; }
+}
+@media (max-width: 700px) {
+    .inventory-heading::before { background-position: 72% center; }
+    .inventory-heading::after {
+        background: linear-gradient(90deg,rgba(6,16,27,.94),rgba(6,16,27,.79) 67%,rgba(6,16,27,.60)),
+                    linear-gradient(0deg,rgba(6,16,27,.52),transparent 46%);
+    }
+    .inventory-heading__inner {
+        min-height: 420px;
+        padding-block: 49px 39px;
+    }
+    .inventory-heading h1 { max-width: 480px; font-size: clamp(36px, 9.3vw, 49px); }
+    .inventory-heading__copy > p:not(.inventory-eyebrow) { max-width: 460px; font-size: 12px; }
+    .inventory-heading__perks {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+    .inventory-heading__perk svg { width: 24px; height: 24px; flex-basis: 24px; }
+    .inventory-heading__perk strong, .inventory-heading__perk small { white-space: normal; }
+    .inventory-section { padding-top: 36px; }
+}
+@media (max-width: 440px) {
+    .inventory-heading__inner { min-height: 470px; padding-block: 49px 37px; }
+    .inventory-heading__perks { grid-template-columns: 1fr; gap: 13px; }
+    .inventory-heading__perk { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .inventory-heading__copy.reveal { animation: none!important; }
+}
+
+/* ========================================================
+   KLABEN Autos · Showroom header V1 (Alle auto's only)
+   Image-backed interior-page hero; no JS, no blur or cursor glow.
+   ======================================================== */
+.inventory-heading {
+    isolation: isolate;
+    background: #091522;
+}
+.inventory-heading::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: url('../images/hero/showroom-hero.webp') center 48% / cover no-repeat;
+    pointer-events: none;
+}
+.inventory-heading::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: linear-gradient(90deg,
+        rgba(5,16,28,.95) 0%,
+        rgba(5,16,28,.81) 27%,
+        rgba(5,16,28,.43) 52%,
+        rgba(5,16,28,.07) 83%,
+        rgba(5,16,28,.13) 100%
+    ), linear-gradient(0deg, rgba(5,16,28,.34) 0%, transparent 31%);
+    pointer-events: none;
+}
+.inventory-heading__inner {
+    min-height: 330px;
+    align-items: stretch;
+    padding-block: 38px 34px;
+    gap: 24px;
+}
+.inventory-heading__copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    width: min(100%, 690px);
+}
+.inventory-heading .inventory-eyebrow {
+    margin-bottom: 14px;
+    color: #b2cae2;
+    letter-spacing: .19em;
+}
+.inventory-heading h1 {
+    max-width: 580px;
+    margin-bottom: 14px;
+    font-size: clamp(38px, 4.3vw, 60px);
+    line-height: 1.08;
+    text-wrap: balance;
+}
+.inventory-heading__copy > p:not(.inventory-eyebrow) {
+    margin: 0;
+    max-width: 490px;
+    font-size: 13px;
+    line-height: 1.77;
+    color: #bdcedf;
+}
+.inventory-heading__perks {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 26px;
+    margin: 27px 0 0;
+    padding: 0;
+    list-style: none;
+}
+.inventory-heading__perk {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 9px;
+}
+.inventory-heading__perk svg {
+    width: 27px;
+    height: 27px;
+    flex: 0 0 27px;
+    color: #90b4d7;
+}
+.inventory-heading__perk span { display: grid; gap: 3px; }
+.inventory-heading__perk strong {
+    color: #f1f6fa;
+    font: 600 10.5px/1.3 var(--font-body, Inter, sans-serif);
+    white-space: nowrap;
+}
+.inventory-heading__perk small {
+    color: #a5bed2;
+    font: 400 10px/1.3 var(--font-body, Inter, sans-serif);
+    white-space: nowrap;
+}
+.inventory-heading__stamp {
+    align-self: flex-end;
+    margin-bottom: 4px;
+    padding: 15px 18px;
+    border-color: rgba(192,217,236,.20);
+    background: rgba(10,24,39,.76);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+}
+.inventory-heading__stamp strong { font-size: 43px; }
+.inventory-heading__stamp span { font-size: 9px; }
+.inventory-section { padding-top: 48px; }
+@media (max-width: 1120px) {
+    .inventory-heading__inner { min-height: 360px; }
+    .inventory-heading__copy { width: min(100%, 630px); }
+    .inventory-heading__perks { max-width: 610px; gap: 15px 18px; }
+    .inventory-heading__perk strong { font-size: 10px; }
+}
+@media (max-width: 950px) {
+    .inventory-heading::before { background-position: 63% 48%; }
+    .inventory-heading::after {
+        background: linear-gradient(90deg,rgba(5,16,28,.97),rgba(5,16,28,.80) 55%,rgba(5,16,28,.43));
+    }
+    .inventory-heading__inner { min-height: 365px; padding-block: 42px 37px; }
+    .inventory-heading__copy { max-width: 620px; }
+    .inventory-heading__stamp { padding: 12px; }
+}
+@media (max-width: 700px) {
+    .inventory-heading::before { background-position: 72% center; }
+    .inventory-heading::after {
+        background: linear-gradient(90deg,rgba(6,16,27,.94),rgba(6,16,27,.79) 67%,rgba(6,16,27,.60)),
+                    linear-gradient(0deg,rgba(6,16,27,.52),transparent 46%);
+    }
+    .inventory-heading__inner {
+        min-height: 420px;
+        padding-block: 49px 39px;
+    }
+    .inventory-heading h1 { max-width: 480px; font-size: clamp(36px, 9.3vw, 49px); }
+    .inventory-heading__copy > p:not(.inventory-eyebrow) { max-width: 460px; font-size: 12px; }
+    .inventory-heading__perks {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+    .inventory-heading__perk svg { width: 24px; height: 24px; flex-basis: 24px; }
+    .inventory-heading__perk strong, .inventory-heading__perk small { white-space: normal; }
+    .inventory-section { padding-top: 36px; }
+}
+@media (max-width: 440px) {
+    .inventory-heading__inner { min-height: 470px; padding-block: 49px 37px; }
+    .inventory-heading__perks { grid-template-columns: 1fr; gap: 13px; }
+    .inventory-heading__perk { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .inventory-heading__copy.reveal { animation: none!important; }
+}

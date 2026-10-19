@@ -50,6 +50,26 @@ get_header();
             <p class="inventory-eyebrow">DE KLABEN SELECTIE <span aria-hidden="true">—</span> MET AANDACHT GEKOZEN</p>
             <h1>Ontdek jouw <span>volgende auto.</span></h1>
             <p>Van sportieve sedans tot karaktervolle cabrio’s. Ontdek onze zorgvuldig geselecteerde occasions.</p>
+            <ul class="inventory-heading__perks" aria-label="Waarom KLABEN Autos">
+                <li class="inventory-heading__perk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M6 3h12l4 6-10 12L2 9l4-6Z"/><path d="M2 9h20M9 3 7 9l5 12 5-12-2-6"/>
+                    </svg>
+                    <span><strong>Geselecteerde kwaliteit</strong><small>Met aandacht gekozen</small></span>
+                </li>
+                <li class="inventory-heading__perk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="m12 22 7-4V6l-7-4-7 4v12l7 4Z"/><path d="m9 12 2 2 4-4"/>
+                    </svg>
+                    <span><strong>Transparante historie</strong><small>Duidelijke informatie</small></span>
+                </li>
+                <li class="inventory-heading__perk">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="m5 11 2-5h10l2 5M4 11h16v7H4zM7 18v2m10-2v2M4 14h3m10 0h3"/><path d="M10 14h4"/>
+                    </svg>
+                    <span><strong>Persoonlijk advies</strong><small>We denken met je mee</small></span>
+                </li>
+            </ul>
         </div>
         <div class="inventory-heading__stamp" aria-hidden="true"><strong><?php echo esc_html((string) count($cars)); ?></strong><span>UNIEKE<br>AUTO’S</span></div>
     </div>
