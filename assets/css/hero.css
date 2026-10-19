@@ -761,3 +761,162 @@ body.home .hero {
 body.home .site-footer {
     margin-top: 16px;
 }
+
+/* =========================================================
+   HERO REFINEMENT 01 — small, reversible changes
+   No extra animation framework; existing entrances stay intact.
+   ========================================================= */
+.hero__featured-vehicle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    max-width: min(100%, 360px);
+    margin-top: 26px;
+    padding: 11px 14px 11px 12px;
+    border: 1px solid rgba(178, 206, 232, .17);
+    border-radius: 12px;
+    color: #d7e6f5;
+    text-decoration: none;
+    background: rgba(12, 25, 37, .63);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: border-color .24s ease, background-color .24s ease, translate .24s ease;
+}
+.hero__featured-vehicle:visited { color: #d7e6f5; }
+.hero__featured-indicator {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    background: #a2bbd5;
+    box-shadow: 0 0 0 4px rgba(138,177,213,.11);
+}
+.hero__featured-copy { display: grid; gap: 3px; min-width: 0; }
+.hero__featured-copy > span {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    color: #93aac0;
+}
+.hero__featured-copy > strong {
+    font: 500 12px/1.35 var(--font-heading);
+    color: #e5eef8;
+}
+.hero__featured-arrow {
+    margin-left: auto;
+    font-size: 17px;
+    color: #a6c7e8;
+    transition: translate .24s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+    .hero__featured-vehicle:hover {
+        border-color: rgba(174,207,240,.48);
+        background: rgba(22, 43, 62, .87);
+        translate: 0 -2px;
+    }
+    .hero__featured-vehicle:hover .hero__featured-arrow { translate: 2px -2px; }
+    .hero-stat {
+        transition: border-color .25s ease, box-shadow .25s ease, translate .25s ease;
+    }
+    .hero-stat:hover {
+        translate: 0 -4px;
+        border-color: rgba(209, 228, 245, .38);
+        box-shadow: 0 22px 46px rgba(0,0,0,.23), inset 0 1px 0 rgba(255,255,255,.13);
+    }
+}
+.hero-stat__label { font-size: 11px; }
+.hero-search__field { transition: background-color .2s ease; }
+.hero-search__field:focus-within { background: rgba(116, 159, 202, .12); }
+.hero-search__field select:focus-visible { outline: 2px solid #9cbfe2; outline-offset: 4px; }
+@media (max-width: 900px) {
+    /* Avoid letting the backdrop compete with the copy on narrower viewports. */
+    body.home .hero {
+        background-image:
+            linear-gradient(90deg, rgba(8,15,22,.96) 0%, rgba(8,15,22,.81) 58%, rgba(8,15,22,.44) 100%),
+            var(--hero-image);
+    }
+}
+@media (max-width: 650px) {
+    .hero__featured-vehicle { margin-top: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero__featured-vehicle, .hero__featured-arrow, .hero-stat, .hero-search__field { transition: none !important; }
+    .hero__featured-vehicle:hover, .hero-stat:hover { translate: none; }
+}
+
+
+/* =========================================================
+   LAYERED MERCEDES HERO — prototype for visual review
+   The background plate and cutout use the same 1672×941 canvas.
+   Keep transforms subtle to avoid visible edge drift.
+   ========================================================= */
+.hero--layered {
+    --klaben-shift-x: 0px;
+    --klaben-shift-y: 0px;
+    --klaben-light-x: 75%;
+    --klaben-light-y: 47%;
+}
+
+.hero--layered .hero__visual {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.hero--layered .hero__inner {
+    z-index: 1;
+}
+.hero--layered .hero__car-stage {
+    position: absolute;
+    inset: -2px;
+    transform: translate3d(var(--klaben-shift-x), var(--klaben-shift-y), 0);
+    will-change: transform;
+    transition: transform 360ms cubic-bezier(.18,.6,.22,1);
+}
+.hero--layered .hero__car {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    filter: drop-shadow(0 12px 12px rgba(4, 11, 17, .19));
+    animation: klaben-car-reveal 1250ms cubic-bezier(.15,.65,.2,1) both;
+}
+@keyframes klaben-car-reveal {
+    0% { opacity: .05; transform: translate3d(0, 23px, 0) scale(.985); filter: brightness(.48); }
+    55% { opacity: .97; }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: brightness(1); }
+}
+.hero--layered .hero__spotlight {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 34% 29% at var(--klaben-light-x) var(--klaben-light-y),
+        rgba(170, 207, 240, .085) 0%,
+        rgba(123, 179, 221, .025) 44%,
+        transparent 79%
+    );
+    mix-blend-mode: screen;
+    opacity: .6;
+    transition: opacity 350ms ease;
+}
+.hero--layered:hover .hero__spotlight { opacity: .9; }
+@media (max-width: 900px) {
+    .hero--layered .hero__car-stage { transform: none !important; will-change: auto; }
+    .hero--layered .hero__car { object-position: 64% center; }
+    .hero--layered .hero__spotlight { opacity: .3; }
+}
+@media (max-width: 650px) {
+    .hero--layered .hero__car { object-position: 68% center; }
+    .hero--layered .hero__visual { opacity: .65; }
+    .hero--layered .hero__spotlight { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero--layered .hero__car { animation: none; filter: none; }
+    .hero--layered .hero__car-stage { transform: none !important; transition: none !important; }
+    .hero--layered .hero__spotlight { display: none; }
+}

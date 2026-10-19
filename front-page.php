@@ -1,5 +1,14 @@
 <?php
 
+// Layered hero: enqueue only on the homepage; no global functions.php changes.
+wp_enqueue_script(
+    'klaben-layered-hero',
+    get_theme_file_uri('/assets/js/layered-hero.js'),
+    [],
+    (string) filemtime(get_theme_file_path('/assets/js/layered-hero.js')),
+    true
+);
+
 get_header();
 
 $cars = require get_theme_file_path('/data/cars.php');
@@ -12,17 +21,45 @@ $featured_cars = array_filter(
 );
 
 $featured_cars = array_slice($featured_cars, 0, 3);
+$hero_car = $featured_cars ? array_values($featured_cars)[0] : null;
+$hero_car_link = $hero_car ? add_query_arg('auto', $hero_car['slug'], home_url('/autos/')) : '';
+
+// Keep the search choices in sync with the vehicles actually in the catalogue.
+$hero_brands = array_unique(array_column($cars, 'brand'));
+$hero_models = array_unique(array_column($cars, 'model'));
+$hero_fuels = array_unique(array_column($cars, 'fuel'));
+$hero_transmissions = array_unique(array_column($cars, 'transmission'));
+sort($hero_brands, SORT_NATURAL | SORT_FLAG_CASE);
+sort($hero_models, SORT_NATURAL | SORT_FLAG_CASE);
+sort($hero_fuels, SORT_NATURAL | SORT_FLAG_CASE);
+sort($hero_transmissions, SORT_NATURAL | SORT_FLAG_CASE);
 
 $hero_image = get_theme_file_uri(
-    '/assets/images/hero/klaben-hero.png'
+    '/assets/images/hero/klaben-background-layer.jpg'
 );
+$hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer.png');
 
 ?>
 
 <section
-    class="hero"
+    class="hero hero--layered"
     style="--hero-image: url('<?php echo esc_url($hero_image); ?>');"
 >
+    <!-- Layers use the same canvas proportions so the car aligns with the scene. -->
+    <div class="hero__visual" aria-hidden="true">
+        <div class="hero__car-stage">
+            <img
+                class="hero__car"
+                src="<?php echo esc_url($hero_car_cutout); ?>"
+                alt=""
+                width="1672"
+                height="941"
+                fetchpriority="high"
+                decoding="async"
+            >
+        </div>
+        <div class="hero__spotlight"></div>
+    </div>
     <div class="hero__inner container">
 
         <div class="hero__content hero-intro">
@@ -64,6 +101,17 @@ $hero_image = get_theme_file_uri(
 
             </div>
 
+            <?php if ($hero_car): ?>
+                <a class="hero__featured-vehicle" href="<?php echo esc_url($hero_car_link); ?>">
+                    <span class="hero__featured-indicator" aria-hidden="true"></span>
+                    <span class="hero__featured-copy">
+                        <span>IN DE SPOTLIGHT</span>
+                        <strong><?php echo esc_html($hero_car['brand'] . ' ' . $hero_car['model']); ?></strong>
+                    </span>
+                    <span class="hero__featured-arrow" aria-hidden="true">↗</span>
+                </a>
+            <?php endif; ?>
+
         </div>
 
         <div
@@ -92,7 +140,7 @@ $hero_image = get_theme_file_uri(
                     </p>
 
                     <p class="hero-stat__value">
-                        34.250 km
+                        <?php echo esc_html($hero_car ? number_format((int) $hero_car['mileage'], 0, ',', '.') . ' km' : '—'); ?>
                     </p>
                 </div>
 
@@ -194,12 +242,9 @@ $hero_image = get_theme_file_uri(
 
                     <select name="merk">
                         <option value="">Alle merken</option>
-                        <option value="mercedes-benz">
-                            Mercedes-Benz
-                        </option>
-                        <option value="bmw">BMW</option>
-                        <option value="audi">Audi</option>
-                        <option value="volkswagen">Volkswagen</option>
+                        <?php foreach ($hero_brands as $brand): ?>
+                            <option value="<?php echo esc_attr(sanitize_title($brand)); ?>"><?php echo esc_html($brand); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </label>
 
@@ -208,10 +253,9 @@ $hero_image = get_theme_file_uri(
 
                     <select name="model">
                         <option value="">Alle modellen</option>
-                        <option value="cla">CLA</option>
-                        <option value="a-klasse">A-Klasse</option>
-                        <option value="3-serie">3 Serie</option>
-                        <option value="a3">A3</option>
+                        <?php foreach ($hero_models as $model): ?>
+                            <option value="<?php echo esc_attr($model); ?>"><?php echo esc_html($model); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </label>
 
@@ -244,10 +288,9 @@ $hero_image = get_theme_file_uri(
 
                     <select name="brandstof">
                         <option value="">Alle brandstoffen</option>
-                        <option value="benzine">Benzine</option>
-                        <option value="diesel">Diesel</option>
-                        <option value="hybride">Hybride</option>
-                        <option value="elektrisch">Elektrisch</option>
+                        <?php foreach ($hero_fuels as $fuel): ?>
+                            <option value="<?php echo esc_attr(sanitize_title($fuel)); ?>"><?php echo esc_html($fuel); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </label>
 
@@ -256,10 +299,9 @@ $hero_image = get_theme_file_uri(
 
                     <select name="transmissie">
                         <option value="">Alles</option>
-                        <option value="automaat">Automaat</option>
-                        <option value="handgeschakeld">
-                            Handgeschakeld
-                        </option>
+                        <?php foreach ($hero_transmissions as $transmission): ?>
+                            <option value="<?php echo esc_attr(sanitize_title($transmission)); ?>"><?php echo esc_html($transmission); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </label>
 
