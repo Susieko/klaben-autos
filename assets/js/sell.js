@@ -44,3 +44,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.getElementById("form-status");
   if (status) status.focus({ preventScroll: true });
 });
+
+/* Auto verkopen V2 — basic format-only demonstration.
+   Does NOT contact the RDW, request a valuation, or store plate numbers. */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("sell-plate-form");
+  const plate = document.getElementById("sell-license");
+  const feedback = document.getElementById("sell-license-feedback");
+  if (!form || !plate || !feedback) return;
+  plate.addEventListener("input", () => {
+    plate.value = plate.value.toUpperCase().replace(/[^A-Z0-9-]/g, "");
+    feedback.replaceChildren();
+    feedback.classList.remove("is-error");
+    plate.removeAttribute("aria-invalid");
+  });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const compact = plate.value.toUpperCase().replace(/-/g, "");
+    const looksPlausible = /^[A-Z0-9]{6}$/.test(compact) && /[A-Z]/.test(compact) && /[0-9]/.test(compact);
+    feedback.replaceChildren();
+    if (!looksPlausible) {
+      plate.setAttribute("aria-invalid", "true");
+      feedback.classList.add("is-error");
+      const message = document.createElement("p");
+      message.textContent = "Vul zes letters/cijfers in, bijvoorbeeld AB-123-C. Dit is alleen een opmaakcontrole.";
+      feedback.append(message);
+      plate.focus();
+      return;
+    }
+    plate.removeAttribute("aria-invalid");
+    feedback.classList.remove("is-error");
+    const message = document.createElement("p");
+    message.textContent = "De basisopmaak is herkend (demo). Dit bevestigt niet dat het kenteken bestaat; RDW-gegevens ophalen volgt in een latere versie.";
+    const link = document.createElement("a");
+    link.href = "#verkoopformulier";
+    link.textContent = "Vul je voertuiggegevens in →";
+    feedback.append(message, link);
+  });
+});
