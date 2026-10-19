@@ -1003,3 +1003,160 @@ body.home .site-footer {
     .hero--layered .hero__cards { animation: none !important; }
     .hero--layered .hero__car-stage { transition: none !important; }
 }
+
+
+/* =========================================================
+   KLABEN HERO V3 — IGNITION SEQUENCE (PREVIEW)
+   0.15–1.65s  The Mercedes coasts into position from the right.
+   0.85–2.0s   Cool road glow and wheel contact wake up.
+   1.2–2.2s    Headlamps flicker once, then illuminate steadily.
+   1.75–2.85s Bodywork catches one soft moving studio reflection.
+   1.8–2.75s  The four data cards settle in consecutively.
+   Animations run once. No spinning wheels or looping flashes.
+   ========================================================= */
+
+/* A centered full-canvas stage keeps glow, cutout and light sweep in sync. */
+.hero--layered .hero__road-glow,
+.hero--layered .hero__headlight-glow {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+}
+.hero--layered .hero__road-glow {
+    z-index: 1;
+    mix-blend-mode: screen;
+    opacity: .66;
+    animation: klaben-road-ignite 1750ms 480ms ease-out both;
+}
+.hero--layered .hero__car-stage { z-index: 2; }
+.hero--layered .hero__spotlight { z-index: 3; }
+.hero--layered .hero__vehicle-arrival {
+    position: absolute;
+    inset: 0;
+    animation: klaben-vehicle-drive-in 1560ms 120ms cubic-bezier(.16,.82,.23,1) both;
+    will-change: transform, opacity;
+}
+/* The vehicle enters horizontally so it never appears to jump vertically. */
+.hero--layered .hero__car {
+    animation: none;
+    filter: drop-shadow(0 11px 12px rgba(4, 11, 17, .31));
+}
+@keyframes klaben-vehicle-drive-in {
+    0% { opacity: 0; transform: translate3d(104px,0,0) scale(.985); filter: brightness(.53); }
+    33% { opacity: .82; }
+    78% { opacity: 1; transform: translate3d(-3px,0,0) scale(1); filter: brightness(.92); }
+    100% { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: brightness(1); }
+}
+@keyframes klaben-road-ignite {
+    0% { opacity: 0; }
+    38% { opacity: .12; }
+    76% { opacity: .86; }
+    100% { opacity: .66; }
+}
+.hero--layered .hero__headlight-glow {
+    z-index: 3;
+    opacity: .72;
+    mix-blend-mode: screen;
+    animation: klaben-headlamps-on 1320ms 1050ms linear both;
+}
+@keyframes klaben-headlamps-on {
+    0%, 12% { opacity: 0; }
+    16% { opacity: .9; }
+    22% { opacity: .09; }
+    29% { opacity: 1; }
+    34% { opacity: .34; }
+    46% { opacity: .93; }
+    100% { opacity: .72; }
+}
+.hero--layered .hero__paint-sweep {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+    background: linear-gradient(105deg,
+        transparent 28%,
+        rgba(125,174,215,0) 38%,
+        rgba(196,225,250,.2) 49%,
+        rgba(240,249,255,.33) 51%,
+        rgba(137,182,222,.08) 56%,
+        transparent 68%);
+    background-size: 230% 100%;
+    background-position: 100% 50%;
+    mix-blend-mode: screen;
+    -webkit-mask-image: var(--klaben-car-mask);
+    mask-image: var(--klaben-car-mask);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    pointer-events: none;
+    animation: klaben-body-sweep 1450ms 1670ms ease-in-out both;
+}
+@keyframes klaben-body-sweep {
+    0% { opacity: 0; background-position: 100% 50%; }
+    15% { opacity: .32; }
+    45% { opacity: .64; }
+    84% { opacity: .33; }
+    100% { opacity: 0; background-position: 0% 50%; }
+}
+/* The old infinite card float felt restless. Replace with four one-off reveals. */
+@media (min-width: 901px) {
+    body.home .hero--layered .hero__cards {
+        animation: none;
+    }
+    .hero--layered .hero-stat:nth-child(n) {
+        animation: klaben-hud-lock 640ms cubic-bezier(.22,1,.36,1) both;
+    }
+    .hero--layered .hero-stat:nth-child(1) { animation-delay: 1660ms; }
+    .hero--layered .hero-stat:nth-child(2) { animation-delay: 1800ms; }
+    .hero--layered .hero-stat:nth-child(3) { animation-delay: 1940ms; }
+    .hero--layered .hero-stat:nth-child(4) { animation-delay: 2080ms; }
+}
+@keyframes klaben-hud-lock {
+    0% { opacity: 0; transform: translateY(16px) scale(.975); border-color: rgba(172,207,243,.05); }
+    65% { opacity: 1; border-color: rgba(191,224,255,.37); }
+    100% { opacity: 1; transform: translateY(0) scale(1); border-color: rgba(203,222,242,.14); }
+}
+
+/* No small text gets hidden while the cinematic imagery animates. */
+@media (max-width: 900px) {
+    .hero--layered .hero__vehicle-arrival {
+        animation: klaben-car-mobile-in 950ms 100ms ease-out both;
+        will-change: auto;
+    }
+    .hero--layered .hero__road-glow { opacity: .38; animation: none; }
+    .hero--layered .hero__headlight-glow { opacity: .48; animation: none; }
+    .hero--layered .hero__paint-sweep { display: none; }
+}
+@keyframes klaben-car-mobile-in {
+    from { opacity: .3; transform: translateX(22px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@media (max-width: 650px) {
+    .hero--layered .hero__road-glow,
+    .hero--layered .hero__headlight-glow { object-position: 68% center; }
+    .hero--layered .hero__road-glow { opacity: .24; }
+    .hero--layered .hero__headlight-glow { opacity: .35; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero--layered .hero__vehicle-arrival,
+    .hero--layered .hero__road-glow,
+    .hero--layered .hero__headlight-glow,
+    .hero--layered .hero__paint-sweep,
+    .hero--layered .hero-stat:nth-child(n) {
+        animation: none !important;
+        transition: none !important;
+    }
+    .hero--layered .hero__vehicle-arrival { opacity: 1; transform: none; filter: none; }
+    .hero--layered .hero__road-glow { opacity: .55; }
+    .hero--layered .hero__headlight-glow { opacity: .65; }
+    .hero--layered .hero__paint-sweep { display: none; }
+    .hero--layered .hero-stat:nth-child(n) { opacity: 1; transform: none; }
+}

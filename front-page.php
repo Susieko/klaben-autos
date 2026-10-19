@@ -46,7 +46,11 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
     style="--hero-image: url('<?php echo esc_url($hero_image); ?>');"
 >
     <!-- Layers use the same canvas proportions so the car aligns with the scene. -->
-    <div class="hero__visual" aria-hidden="true">
+    <div
+        class="hero__visual"
+        style="--klaben-car-mask: url('<?php echo esc_url($hero_car_cutout); ?>');"
+        aria-hidden="true"
+    >
         <img
             class="hero__ground"
             src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-ground-layer.png')); ?>"
@@ -55,16 +59,36 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
             height="941"
             decoding="async"
         >
+        <!-- Road lighting is independent of the car: tyres remain grounded. -->
+        <img
+            class="hero__road-glow"
+            src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-road-glow.png')); ?>"
+            alt=""
+            width="1672"
+            height="941"
+            decoding="async"
+        >
         <div class="hero__car-stage">
-            <img
-                class="hero__car"
-                src="<?php echo esc_url($hero_car_cutout); ?>"
-                alt=""
-                width="1672"
-                height="941"
-                fetchpriority="high"
-                decoding="async"
-            >
+            <div class="hero__vehicle-arrival">
+                <img
+                    class="hero__car"
+                    src="<?php echo esc_url($hero_car_cutout); ?>"
+                    alt=""
+                    width="1672"
+                    height="941"
+                    fetchpriority="high"
+                    decoding="async"
+                >
+                <div class="hero__paint-sweep"></div>
+                <img
+                    class="hero__headlight-glow"
+                    src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-headlight-glow.png')); ?>"
+                    alt=""
+                    width="1672"
+                    height="941"
+                    decoding="async"
+                >
+            </div>
         </div>
         <div class="hero__spotlight"></div>
     </div>
