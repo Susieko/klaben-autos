@@ -41,6 +41,11 @@ return [
         'body' => 'Hatchback',
         'location' => 'Breda',
         'image' => 'audi.png',
+        'images' => [
+            'audi.png',
+            'audi2.png',
+            'audi3.png',
+        ],
         'featured' => true,
     ],
     [
@@ -56,6 +61,11 @@ return [
         'body' => 'Cabriolet',
         'location' => 'Tilburg',
         'image' => 'klaben.png',
+        'images' => [
+            'klaben.png',
+            'klaben2.png',
+            'klaben3.png',
+        ],
         'featured' => true,
     ],
 ];
