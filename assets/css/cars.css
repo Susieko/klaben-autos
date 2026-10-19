@@ -988,3 +988,51 @@
 }
 /* Sprint 03 — return navigation beneath vehicle financing CTA */
 .vehicle-finance-back{display:inline-flex;margin-top:15px;font-size:11px;color:#a6bdd0;text-decoration:none}.vehicle-finance-back:hover{text-decoration:underline}
+
+/* Klaben Autos — Featured vehicles: quiet editorial CTA (no underline) */
+.featured-cars .section-heading__link,
+.featured-cars .section-heading__link:link,
+.featured-cars .section-heading__link:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 11px 16px;
+    margin-bottom: 2px;
+    min-height: 42px;
+    color: #c2d8ed;
+    background: rgba(32, 51, 69, .54);
+    border: 1px solid rgba(156, 190, 219, .26);
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: background-color .22s ease, border-color .22s ease,
+                color .22s ease, transform .22s ease;
+}
+.featured-cars .section-heading__link span {
+    display: inline-block;
+    transition: transform .22s ease;
+}
+.featured-cars .section-heading__link:hover,
+.featured-cars .section-heading__link:focus-visible {
+    gap: 12px; /* override older hover gap */
+    color: #fff;
+    background: rgba(63, 92, 123, .46);
+    border-color: rgba(180, 210, 235, .55);
+    text-decoration: none !important;
+}
+.featured-cars .section-heading__link:hover span,
+.featured-cars .section-heading__link:focus-visible span {
+    transform: translateX(4px);
+}
+.featured-cars .section-heading__link:focus-visible {
+    outline: 2px solid #a9c8e6;
+    outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .featured-cars .section-heading__link,
+    .featured-cars .section-heading__link span {
+        transition: none;
+    }
+}
