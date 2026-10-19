@@ -47,6 +47,14 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
 >
     <!-- Layers use the same canvas proportions so the car aligns with the scene. -->
     <div class="hero__visual" aria-hidden="true">
+        <img
+            class="hero__ground"
+            src="<?php echo esc_url(get_theme_file_uri('/assets/images/hero/klaben-ground-layer.png')); ?>"
+            alt=""
+            width="1672"
+            height="941"
+            decoding="async"
+        >
         <div class="hero__car-stage">
             <img
                 class="hero__car"

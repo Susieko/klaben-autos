@@ -13,7 +13,7 @@
         frame = 0;
         hero.style.setProperty('--klaben-shift-x', '0px');
         hero.style.setProperty('--klaben-shift-y', '0px');
-        hero.style.setProperty('--klaben-light-x', '75%');
+        hero.style.setProperty('--klaben-light-x', '78%');
         hero.style.setProperty('--klaben-light-y', '47%');
     }
 
@@ -24,11 +24,11 @@
         const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
         if (frame) cancelAnimationFrame(frame);
         frame = requestAnimationFrame(() => {
-            // Less than 8 px at the extremes: depth without a floating vehicle.
-            hero.style.setProperty('--klaben-shift-x', `${((x - .5) * -12).toFixed(1)}px`);
-            hero.style.setProperty('--klaben-shift-y', `${((y - .5) * -7).toFixed(1)}px`);
-            hero.style.setProperty('--klaben-light-x', `${(x * 100).toFixed(1)}%`);
-            hero.style.setProperty('--klaben-light-y', `${(y * 100).toFixed(1)}%`);
+            // Up to 3px of horizontal drift, no vertical movement: keep tyre contact.
+            hero.style.setProperty('--klaben-shift-x', `${((x - .5) * -6).toFixed(1)}px`);
+            hero.style.setProperty('--klaben-shift-y', '0px');
+            hero.style.setProperty('--klaben-light-x', `${(60 + x * 35).toFixed(1)}%`);
+            hero.style.setProperty('--klaben-light-y', `${(40 + y * 20).toFixed(1)}%`);
             frame = 0;
         });
     }, { passive: true });
