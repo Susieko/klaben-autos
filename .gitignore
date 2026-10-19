@@ -1,18 +1,22 @@
-# This is a THEME-ONLY repository. Never commit your whole Local WordPress installation.
-.DS_Store
-Thumbs.db
-*.log
-node_modules/
-dist/
+
+# Local development
 .env
 .env.*
 !.env.example
-wp-config.php
-wp-content/uploads/
-app/sql/
-*.sql
-*.sqlite
-*.sqlite3
+*.local
+.DS_Store
+Thumbs.db
+
+# Dependencies and generated files
+node_modules/
 vendor/
-.idea/
+dist/
+.cache/
+
+# Editor settings
 .vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp

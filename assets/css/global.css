@@ -1,0 +1,565 @@
+:root {
+    --color-bg: #0e161e;
+    --color-bg-deep: #091119;
+    --color-surface: #121e29;
+    --color-surface-light: #172532;
+
+    --color-text: #f5f7fa;
+    --color-text-soft: #d7e2ee;
+    --color-muted: #9eacba;
+
+    --color-accent: #5f7fa6;
+    --color-accent-hover: #6f8fb5;
+
+    --color-border: rgba(181, 198, 218, 0.16);
+    --color-border-strong: rgba(181, 198, 218, 0.3);
+
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --container-width: 1380px;
+    --header-height: 88px;
+
+    --radius-small: 10px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
+
+    --transition: 180ms ease;
+}
+
+body.nav-open {
+    overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: var(--color-bg);
+    color: var(--color-text);
+
+    font-family: var(--font-body);
+}
+
+.container {
+    width: min(var(--container-width), calc(100% - 48px));
+    margin-inline: auto;
+}
+
+.site-header {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.temporary-logo {
+    margin: 0;
+
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.theme-test {
+    min-height: calc(100vh - 84px);
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+}
+
+.theme-test__eyebrow {
+    color: var(--color-accent);
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.theme-test h1 {
+    margin: 12px 0;
+
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 7vw, 80px);
+}
+
+.theme-test p {
+    max-width: 560px;
+    margin-inline: auto;
+
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 48px;
+    padding: 0 24px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-small);
+
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition:
+        background-color var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button--primary {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+.button--primary:hover {
+    background: var(--color-accent-hover);
+}
+
+/* =========================================================
+   KLABEN AUTOS — FOOTER
+   ========================================================= */
+
+.site-footer {
+    position: relative;
+
+    background: var(--color-bg-deep);
+    border-top: 1px solid var(--color-border);
+}
+
+.site-footer__top {
+    padding: 76px 0 62px;
+
+    background:
+        radial-gradient(
+            circle at 14% 20%,
+            rgba(95, 127, 166, 0.08),
+            transparent 30%
+        ),
+        var(--color-bg-deep);
+}
+
+.site-footer__grid {
+    display: grid;
+    grid-template-columns:
+        minmax(270px, 1.5fr)
+        repeat(3, minmax(140px, 0.65fr));
+
+    gap: clamp(38px, 6vw, 82px);
+}
+
+.site-footer__brand {
+    max-width: 430px;
+}
+
+.site-footer__logo-link {
+    display: inline-flex;
+
+    margin-bottom: 24px;
+}
+
+.site-footer__logo {
+    width: 215px;
+    height: auto;
+
+    filter: brightness(0) invert(1);
+}
+
+.site-footer__intro {
+    margin-bottom: 17px;
+
+    color: var(--color-text-soft);
+
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.site-footer__disclaimer {
+    max-width: 370px;
+    margin: 0;
+
+    color: rgba(158, 172, 186, 0.68);
+
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.site-footer__heading {
+    margin: 2px 0 21px;
+
+    color: #ffffff;
+
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.site-footer__nav {
+    display: grid;
+    gap: 12px;
+}
+
+.site-footer__nav a,
+.site-footer__contact a {
+    width: fit-content;
+
+    color: var(--color-muted);
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+.site-footer__nav a:visited,
+.site-footer__contact a:visited {
+    color: var(--color-muted);
+}
+
+.site-footer__nav a:hover,
+.site-footer__nav a:focus-visible,
+.site-footer__contact a:hover,
+.site-footer__contact a:focus-visible {
+    color: var(--color-carolina);
+    transform: translateX(3px);
+}
+
+.site-footer__contact p {
+    margin-bottom: 8px;
+
+    color: var(--color-muted);
+
+    font-size: 12px;
+}
+
+.site-footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 24px;
+}
+
+.site-footer__socials a {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    background: rgba(143, 166, 189, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+
+    color: var(--color-powder);
+
+    transition:
+        color var(--transition),
+        background-color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.site-footer__socials a:hover,
+.site-footer__socials a:focus-visible {
+    color: #ffffff;
+
+    background: rgba(95, 127, 166, 0.18);
+    border-color: var(--color-border-strong);
+
+    transform: translateY(-2px);
+}
+
+.site-footer__socials svg {
+    width: 17px;
+    height: 17px;
+
+    stroke-width: 1.6;
+}
+
+/* Bottom row */
+
+.site-footer__bottom {
+    border-top: 1px solid var(--color-border);
+}
+
+.site-footer__bottom-inner {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.site-footer__bottom p {
+    margin: 0;
+
+    color: var(--color-muted);
+
+    font-size: 11px;
+}
+
+.site-footer__legal {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px 24px;
+}
+
+.site-footer__legal a,
+.site-footer__legal span {
+    color: rgba(158, 172, 186, 0.72);
+    text-decoration: none;
+
+    font-size: 10px;
+}
+
+.site-footer__legal a {
+    transition: color var(--transition);
+}
+
+.site-footer__legal a:hover,
+.site-footer__legal a:focus-visible {
+    color: var(--color-carolina);
+}
+
+/* Responsive footer */
+
+@media (max-width: 950px) {
+    .site-footer__grid {
+        grid-template-columns: 1.3fr 1fr 1fr;
+    }
+
+    .site-footer__brand {
+        grid-column: 1 / -1;
+
+        max-width: 620px;
+    }
+}
+
+@media (max-width: 650px) {
+    .site-footer__top {
+        padding: 58px 0 46px;
+    }
+
+    .site-footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 42px 28px;
+    }
+
+    .site-footer__brand {
+        grid-column: 1 / -1;
+    }
+
+    .site-footer__contact {
+        grid-column: 1 / -1;
+    }
+
+    .site-footer__bottom-inner {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
+
+    .site-footer__legal {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 420px) {
+    .site-footer__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer__brand,
+    .site-footer__contact {
+        grid-column: auto;
+    }
+
+    .site-footer__logo {
+        width: 190px;
+    }
+}
+
+@media (max-width: 700px) {
+    .site-footer__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.button--secondary {
+    background: rgba(9, 17, 25, 0.42);
+    border-color: var(--color-border-strong);
+    color: #ffffff;
+}
+
+.button--secondary:hover {
+    background: rgba(181, 198, 218, 0.08);
+    border-color: rgba(181, 198, 218, 0.46);
+}
+
+/* Remove default browser link styling */
+
+.site-nav__link,
+.hero-search__advanced,
+.car-card__title a {
+    text-decoration: none;
+}
+
+/* =========================================================
+   KLABEN AUTOS — MOTION SYSTEM
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(34px);
+
+    transition:
+        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero entrance */
+
+.hero-intro {
+    animation: hero-copy-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-cards-intro {
+    animation: hero-cards-in 1050ms 180ms
+        cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-search-intro {
+    animation: hero-search-in 950ms 320ms
+        cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-copy-in {
+    from {
+        opacity: 0;
+        transform: translate3d(-28px, 18px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes hero-cards-in {
+    from {
+        opacity: 0;
+        transform: translate3d(28px, -14px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes hero-search-in {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Premium light sweep */
+
+.button--primary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.button--primary::after {
+    content: "";
+
+    position: absolute;
+    inset: -40% auto -40% -70%;
+
+    width: 42%;
+
+    background: linear-gradient(
+        105deg,
+        transparent,
+        rgba(255, 255, 255, 0.22),
+        transparent
+    );
+
+    transform: skewX(-18deg);
+    transition: left 600ms ease;
+
+    pointer-events: none;
+}
+
+.button--primary:hover::after {
+    left: 130%;
+}
+
+/* Reduce motion for accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
