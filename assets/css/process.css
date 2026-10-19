@@ -423,3 +423,63 @@
     .featured-cars { padding-top: 54px; padding-bottom: 74px; }
     .featured-cars .section-heading { margin-bottom: 25px; }
 }
+
+/* ==============================================================
+   KLABEN Autos — Homepage motion refinement (preview)
+   Append to the END of assets/css/process.css.
+   Keeps existing card hover/gallery motion. CSS only.
+   ============================================================== */
+
+/* No whole-section movement after the process introduction.
+   The giant containers should not slide up when scrolling. */
+#uitgelicht.reveal,
+#financiering.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+/* Calm headline entrance: opacity only, no movement. */
+.klaben-process__intro.reveal {
+    transform: none;
+    transition: opacity 360ms ease-out;
+}
+
+/* Three process cards still arrive one after another, but gently. */
+.klaben-process__step.reveal {
+    transform: translateY(10px);
+    transition: opacity 420ms ease-out, transform 420ms cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+.klaben-process__step.reveal.is-visible {
+    transform: none;
+}
+
+/* Featured cards fade in one by one. No large jumping motion.
+   Retain the deliberate hover lift independently. */
+#uitgelicht .car-grid .car-card.reveal {
+    transform: none;
+    transition:
+        opacity 390ms ease-out,
+        border-color 260ms ease,
+        box-shadow 260ms ease,
+        transform 300ms cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--reveal-delay, 0ms), 0ms, 0ms, 0ms;
+}
+#uitgelicht .car-grid .car-card.reveal.is-visible:hover {
+    transform: translateY(-5px);
+}
+
+/* Explicit reduced-motion support for the new rules. */
+@media (prefers-reduced-motion: reduce) {
+    .klaben-process__intro.reveal,
+    .klaben-process__step.reveal,
+    #uitgelicht .car-grid .car-card.reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    #uitgelicht .car-grid .car-card.reveal.is-visible:hover {
+        transform: none;
+    }
+}
