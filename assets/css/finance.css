@@ -26,3 +26,214 @@
 @media(max-width:800px){.finance-hero__grid{grid-template-columns:1fr;gap:0}.finance-hero__text{padding:25px 0 0}.finance-breadcrumb{margin-bottom:43px}.finance-hero__image{min-height:280px}.finance-hero__image img{height:300px;width:min(100%,600px)}.finance-hero__floating--top{top:2%;right:10%}.finance-hero__floating--bottom{bottom:5%;left:6%}.finance-workspace__intro{align-items:start;flex-direction:column}.finance-layout{grid-template-columns:1fr}.finance-result{position:static}.finance-workspace{padding:75px 0 95px}}
 @media(max-width:520px){.finance-hero h1{font-size:clamp(38px,10vw,52px)}.finance-hero__lead{font-size:13px}.finance-hero__image{min-height:215px}.finance-hero__image img{height:240px}.finance-hero__floating{display:none}.finance-workspace{padding:60px 0}.finance-controls__heading{gap:12px}.finance-terms__options{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.finance-term span{font-size:11px}.finance-terms__options small{font-size:8px}.finance-result__figure strong{font-size:clamp(36px,10vw,50px)}.finance-outro__inner{flex-direction:column;align-items:flex-start}.finance-outro{padding:54px 0}}
 @media(prefers-reduced-motion:reduce){.finance-hero__image img{animation:none!important}.finance-result__bar span{transition:none!important}}
+/* KLABEN Autos — Financial Cockpit hero, scoped V1 preview.
+   Paste at the VERY END of assets/css/finance.css.
+   Does not modify the working financing calculator. */
+
+.finance-hero.finance-hero--cockpit {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #07131f;
+  border-bottom: 1px solid rgba(153, 188, 221, .20);
+}
+
+.finance-hero--cockpit .finance-cockpit__scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(7, 17, 28, .86) 0%, rgba(7, 17, 28, .55) 33%, rgba(7, 17, 28, .06) 73%),
+    linear-gradient(0deg, rgba(7, 17, 28, .78) 0%, transparent 34%, rgba(7, 17, 28, .16) 100%),
+    url('../images/hero/finance-cockpit.webp');
+  background-position: center, center, center 42%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* A single dashboard ignition flash: a restrained light cue, no car movements. */
+.finance-hero--cockpit .finance-cockpit__scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 36% 40% at 76% 50%, rgba(113, 183, 248, .24), transparent 84%);
+  opacity: .10;
+  animation: klaben-cockpit-ignite 1300ms ease-out 180ms backwards;
+}
+@keyframes klaben-cockpit-ignite {
+  0% { opacity: 0; }
+  44% { opacity: .52; }
+  100% { opacity: .10; }
+}
+
+.finance-hero--cockpit .finance-cockpit__body {
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+}
+.finance-hero--cockpit .finance-hero__text {
+  z-index: 1;
+  width: min(100%, 690px);
+  padding: 46px 0 40px;
+}
+.finance-hero--cockpit .finance-breadcrumb {
+  margin: 0 0 48px;
+}
+.finance-hero--cockpit h1 {
+  font-size: clamp(38px, 4.7vw, 63px);
+  line-height: 1.13;
+  letter-spacing: -.048em;
+  max-width: 740px;
+  margin-bottom: 19px;
+  text-wrap: balance;
+}
+.finance-hero--cockpit h1 span {
+  display: block;
+  color: #9bb8d5;
+}
+.finance-hero--cockpit .finance-hero__lead {
+  max-width: 480px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #d1dfeb;
+  margin-bottom: 23px;
+}
+.finance-hero--cockpit .finance-eyebrow { margin-bottom: 15px; }
+.finance-hero--cockpit .finance-hero__footnote {
+  margin-top: 15px;
+  color: #a6bacc;
+}
+.finance-hero--cockpit .finance-cockpit__cta {
+  text-decoration: none;
+  border-radius: 8px;
+}
+.finance-hero--cockpit .finance-cockpit__cta span { display: inline-block; transition: transform .2s ease; }
+.finance-hero--cockpit .finance-cockpit__cta:hover span,
+.finance-hero--cockpit .finance-cockpit__cta:focus-visible span { transform: translateY(3px); }
+
+.finance-hero--cockpit .finance-cockpit__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  list-style: none;
+  padding: 23px 0 27px;
+  margin: 0;
+  border-top: 1px solid rgba(176, 204, 234, .19);
+}
+.finance-hero--cockpit .finance-cockpit__steps li {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.finance-hero--cockpit .finance-cockpit__number {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(72, 112, 150, .28);
+  border: 1px solid rgba(158, 196, 226, .29);
+  font: 600 12px var(--font-heading);
+  color: #c8e1f5;
+}
+.finance-hero--cockpit .finance-cockpit__stepcopy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.finance-hero--cockpit .finance-cockpit__stepcopy strong {
+  color: #eff7fd;
+  font: 600 13px var(--font-heading);
+}
+.finance-hero--cockpit .finance-cockpit__stepcopy small {
+  color: #aec4d6;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* On mobile, preserve space for the copy instead of cropping the cockpit into it. */
+@media (max-width: 800px) {
+  .finance-hero--cockpit .finance-cockpit__scene {
+    background-position: center, center, 63% center;
+    background-image:
+      linear-gradient(90deg, rgba(7, 17, 28, .90), rgba(7, 17, 28, .65)),
+      linear-gradient(0deg, #07111c 2%, transparent 75%),
+      url('../images/hero/finance-cockpit.webp');
+  }
+  .finance-hero--cockpit .finance-cockpit__body { min-height: 440px; }
+  .finance-hero--cockpit .finance-hero__text { padding: 26px 0 36px; }
+  .finance-hero--cockpit .finance-breadcrumb { margin-bottom: 42px; }
+  .finance-hero--cockpit .finance-cockpit__steps { gap: 13px; }
+  .finance-hero--cockpit .finance-cockpit__steps li { align-items: flex-start; gap: 9px; }
+  .finance-hero--cockpit .finance-cockpit__number { flex-basis: 33px; width: 33px; height: 33px; }
+}
+@media (max-width: 650px) {
+  .finance-hero--cockpit .finance-cockpit__body { min-height: 410px; }
+  .finance-hero--cockpit h1 { font-size: clamp(34px, 8.5vw, 48px); }
+  .finance-hero--cockpit .finance-hero__lead { font-size: 13px; line-height: 1.7; }
+  .finance-hero--cockpit .finance-cockpit__steps { grid-template-columns: 1fr; padding: 17px 0 23px; gap: 13px; }
+  .finance-hero--cockpit .finance-cockpit__steps li { align-items: center; }
+  .finance-hero--cockpit .finance-cockpit__stepcopy { gap: 2px; }
+  .finance-hero--cockpit .finance-cockpit__stepcopy strong { font-size: 12px; }
+  .finance-hero--cockpit .finance-cockpit__stepcopy small { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .finance-hero--cockpit .finance-cockpit__scene::after { animation: none !important; }
+  .finance-hero--cockpit .finance-cockpit__cta span { transition: none; }
+}
+
+
+
+/* KLABEN — Financing CTA polish */
+
+.finance-result__browse,
+.finance-result__browse:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 24px;
+    padding: 11px 16px;
+
+    color: #C5D8EB;
+    text-decoration: none;
+
+    background: rgba(112, 151, 190, 0.06);
+    border: 1px solid rgba(160, 192, 223, 0.22);
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    transition:
+        background 250ms ease,
+        border-color 250ms ease,
+        color 250ms ease;
+}
+
+.finance-result__browse:hover,
+.finance-result__browse:focus-visible {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: rgba(112, 151, 190, 0.15);
+    border-color: rgba(160, 192, 223, 0.45);
+}
+
+.finance-result__browse span {
+    display: inline-block;
+    transition: transform 250ms ease;
+}
+
+.finance-result__browse:hover span {
+    transform: translate(3px, -3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .finance-result__browse,
+    .finance-result__browse span {
+        transition: none;
+    }
+}

@@ -23,27 +23,47 @@ $start_down = min(5000, $start_price);
 $car_image = $selected_car ? klaben_vehicle_images($selected_car)[0] : get_theme_file_uri('/assets/images/cars/mercedes.png');
 $car_title = $selected_car ? $selected_car['brand'] . ' ' . $selected_car['model'] : 'Jouw droomauto';
 ?>
-<section class="finance-hero">
-    <div class="container finance-hero__grid">
-        <div class="finance-hero__text reveal">
+<section class="finance-hero finance-hero--cockpit" aria-labelledby="finance-hero-title">
+    <div class="finance-cockpit__scene" aria-hidden="true"></div>
+
+    <div class="container finance-cockpit__body">
+        <div class="finance-hero__text">
             <nav class="finance-breadcrumb" aria-label="Broodkruimelnavigatie">
-                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a><span aria-hidden="true">/</span><span aria-current="page">Financiering</span>
+                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">Financiering</span>
             </nav>
-            <p class="finance-eyebrow">FINANCIERING / REKENVOORBEELD</p>
-            <h1>De auto die je wilt.<br><span>Een bedrag dat past.</span></h1>
-            <p class="finance-hero__lead">Speel met de aanschafprijs, aanbetaling en looptijd. Bekijk direct hoe het voorbeeldbedrag per maand verandert.</p>
-            <a href="#calculator" class="button button--primary">Bereken je maandbedrag <span aria-hidden="true">↗</span></a>
+
+            <p class="finance-eyebrow">Financiering / Rekenvoorbeeld</p>
+            <h1 id="finance-hero-title">De auto die je wilt.<span>Een bedrag dat past.</span></h1>
+            <p class="finance-hero__lead">Ontdek wat jouw volgende auto per maand kan kosten. Pas de aanschafprijs, aanbetaling en looptijd aan en bekijk direct het rekenvoorbeeld.</p>
+
+            <a class="button button--primary finance-cockpit__cta" href="#calculator">
+                Bereken je maandbedrag
+                <span aria-hidden="true">↓</span>
+            </a>
             <p class="finance-hero__footnote">Fictief automotive portfolio-concept · Geen financieringsaanbod</p>
         </div>
-        <div class="finance-hero__image" aria-hidden="true">
-            <span class="finance-hero__orbit finance-hero__orbit--one"></span>
-            <span class="finance-hero__orbit finance-hero__orbit--two"></span>
-            <img src="<?php echo esc_url($car_image); ?>" alt="" fetchpriority="high" data-finance-hero-image>
-            <span class="finance-hero__floating finance-hero__floating--top"><span>01 / FLEXIBEL</span><strong>Jouw keuzes.</strong></span>
-            <span class="finance-hero__floating finance-hero__floating--bottom"><span>02 / TRANSPARANT</span><strong>Jouw overzicht.</strong></span>
-        </div>
+    </div>
+
+    <div class="container">
+        <ol class="finance-cockpit__steps" aria-label="Zo werkt de berekening">
+            <li>
+                <span class="finance-cockpit__number" aria-hidden="true">01</span>
+                <span class="finance-cockpit__stepcopy"><strong>Kies je auto</strong><small>Selecteer een model uit onze collectie</small></span>
+            </li>
+            <li>
+                <span class="finance-cockpit__number" aria-hidden="true">02</span>
+                <span class="finance-cockpit__stepcopy"><strong>Pas je budget aan</strong><small>Aanschafprijs, aanbetaling en looptijd</small></span>
+            </li>
+            <li>
+                <span class="finance-cockpit__number" aria-hidden="true">03</span>
+                <span class="finance-cockpit__stepcopy"><strong>Bekijk je maandbedrag</strong><small>Direct een transparant rekenvoorbeeld</small></span>
+            </li>
+        </ol>
     </div>
 </section>
+
 
 <section class="finance-workspace" id="calculator" aria-labelledby="finance-calculator-title">
     <div class="container">
