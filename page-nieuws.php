@@ -16,26 +16,32 @@ $categories = get_categories(['hide_empty' => true, 'orderby' => 'count', 'order
 $news_url = get_permalink();
 get_header();
 ?>
-<section class="news-intro" aria-labelledby="news-title">
-    <div class="container news-intro__grid">
-        <div class="news-intro__copy reveal">
-            <nav class="news-crumbs" aria-label="Broodkruimelnavigatie">
-                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a><span aria-hidden="true">/</span><span aria-current="page">Nieuws</span>
-            </nav>
+<section class="news-intro news-intro--editorial" aria-labelledby="news-title">
+    <div class="container news-editorial">
+        <nav class="news-crumbs" aria-label="Broodkruimelnavigatie">
+            <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Nieuws</span>
+        </nav>
+        <div class="news-editorial__topline">
             <p class="news-kicker">KLABEN JOURNAL <span aria-hidden="true">/</span> VERHALEN & INZICHTEN</p>
-            <h1 id="news-title">Meer dan alleen <em>de rit.</em></h1>
-            <p>Verhalen over bijzondere auto’s, slimme keuzes en alles wat rijden mooi maakt. Met aandacht samengesteld.</p>
-            <a class="news-intro__scroll" href="#verhalen">Ontdek de verhalen <span aria-hidden="true">↓</span></a>
+            <span class="news-editorial__index" aria-hidden="true">VERHALEN MET KARAKTER</span>
         </div>
-        <div class="news-intro__visual" aria-hidden="true">
-            <span class="news-intro__visual-orbit"></span>
-            <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/cars/mercedes.png')); ?>" alt="" decoding="async">
-            <span class="news-intro__visual-note"><strong>DRIVE THE STORY.</strong><small>THE KLABEN EDITION — 001</small></span>
+        <div class="news-editorial__layout">
+            <h1 id="news-title">Meer dan alleen <em>de rit.</em></h1>
+            <div class="news-editorial__description">
+                <p>Verhalen over bijzondere auto's, slimme keuzes en alles wat rijden mooi maakt. Met aandacht samengesteld.</p>
+                <a href="#verhalen" class="news-editorial__cta">Ontdek de verhalen <span aria-hidden="true">↓</span></a>
+            </div>
+        </div>
+        <div class="news-editorial__footer" aria-hidden="true">
+            <span>AUTONIEUWS <b>·</b> KOOPADVIES <b>·</b> ACHTER DE SCHERMEN</span>
+            <span class="news-editorial__mark">K / JOURNAL</span>
         </div>
     </div>
 </section>
 
-<section class="news-feed" id="verhalen" aria-labelledby="news-feed-title">
+<section class="news-feed news-feed--journal" id="verhalen" aria-labelledby="news-feed-title">
     <div class="container">
         <div class="news-section-heading">
             <div><p class="news-kicker">ONZE REDACTIE</p><h2 id="news-feed-title">Laatste <span>verhalen.</span></h2></div>
@@ -48,9 +54,9 @@ get_header();
             <?php endforeach; ?>
         </nav>
         <?php if ($news->have_posts()): ?>
-            <div class="news-list" aria-label="Artikelen">
+            <div class="news-list news-list--journal" aria-label="Artikelen">
                 <?php $index = 0; while ($news->have_posts()): $news->the_post();
-                    get_template_part('includes/news-card', null, ['featured' => $page_number === 1 && $index === 0]);
+                    get_template_part('includes/news-card', null, ['variant' => $page_number === 1 && $index === 0 ? 'featured' : ($page_number === 1 && $index <= 2 ? 'compact' : 'regular')]);
                     $index++;
                 endwhile; wp_reset_postdata(); ?>
             </div>
