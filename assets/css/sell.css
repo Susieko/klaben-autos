@@ -172,132 +172,145 @@
 }
 @media (prefers-reduced-motion:reduce) { .sell-plate-card__submit { transition:none; } .sell-plate-card__submit:hover { transform:none; } }
 
-/* ============================================================
-   KLABEN AUTOS · AUTO VERKOPEN HERO V2
-   Add these rules at the BOTTOM of assets/css/sell.css.
-   No car image, extra blur or cursor-following glow.
-   ============================================================ */
-.sell-hero--plate {
-    background:
-        radial-gradient(ellipse 55% 120% at 77% 50%, rgba(59, 86, 113, .20), transparent 75%),
-        linear-gradient(112deg, #0b1723 0%, #0e1d2a 55%, #101c27 100%);
-    isolation: isolate;
-    border-bottom: 1px solid rgba(172,198,222,.13);
-}
-.sell-hero--plate::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background:
-        repeating-linear-gradient(111deg, transparent 0, transparent 115px, rgba(183,206,227,.018) 116px, transparent 117px),
-        linear-gradient(0deg, rgba(7, 16, 24,.2), transparent 35%);
-}
-.sell-hero-v2__layout {
-    min-height: 570px;
-    grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr);
-    gap: clamp(46px, 6vw, 110px);
-    align-items: center;
-}
-.sell-hero--plate .sell-hero-v2__copy { padding: 48px 0 78px; }
-.sell-hero--plate .sell-breadcrumb { margin-bottom: 45px; }
-.sell-hero-v2__eyebrow { margin-bottom: 21px; }
-.sell-hero--plate h1 {
-    font-size: clamp(46px, 4.85vw, 77px);
-    line-height: 1.12;
-    max-width: 730px;
-    margin-bottom: 22px;
-    letter-spacing: -.055em;
-}
-.sell-hero--plate h1 span { color: #93aecb; }
-.sell-hero--plate .sell-hero__lead { max-width: 470px; margin-bottom: 21px; line-height: 1.8; font-size: 14px; }
-.sell-hero-v2__benefits { display: flex; flex-wrap: wrap; gap: 12px 27px; margin-bottom: 26px; }
-.sell-hero-v2__benefits > span { display: inline-flex; align-items: center; gap: 9px; color: #bbccdc; font-size: 12px; }
-.sell-hero-v2__benefits svg { width: 18px; height: 18px; color: #98b5d5; }
-.sell-hero-v2__manual {
-    display: inline-flex; align-items: center; gap: 11px;
-    text-decoration: none; border: 1px solid rgba(167,195,224,.37);
-    background: rgba(110,150,191,.08); border-radius: 9px;
-    padding: 13px 17px; color: #f1f6fc; font-size: 12px; font-weight: 600;
-    transition: background .2s ease, border-color .2s ease;
-}
-.sell-hero-v2__manual:hover,.sell-hero-v2__manual:focus-visible { background: rgba(110,150,191,.19); border-color: #9fbddd; color: white; }
-.sell-hero--plate .sell-hero__micro { margin-top: 17px; }
-.sell-hero-v2__right { display: grid; justify-items: stretch; align-items: center; padding: 57px 0 50px; min-width: 0; }
-.sell-plate-card {
-    width: 100%; max-width: 490px; justify-self: end;
-    padding: clamp(24px, 2.5vw, 36px);
-    border: 1px solid rgba(168,194,218,.23); border-radius: 19px;
-    background: linear-gradient(147deg, #1b2c3c 0%, #122130 65%, #101d29 100%);
-    box-shadow: 0 32px 66px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.05);
-}
-.sell-plate-card__top { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:28px; }
-.sell-plate-card__step { display:flex; align-items:center; gap:9px; font-size: 10px; color:#a5bfd9; font-weight:700; letter-spacing:.16em; }
-.sell-plate-card__step-dot { width: 6px; height: 6px; border-radius: 50%; background:#9bb8d3; }
-.sell-plate-card__scan { display:grid; place-items:center; width:41px; height:41px; flex:none; border:1px solid rgba(169,197,223,.2); border-radius:11px; background:#223549; color:#c4d9ec; }
-.sell-plate-card__scan svg { width:21px; height:21px; }
-.sell-plate-card h2 { font:600 clamp(23px,2.1vw,31px)/1.3 var(--font-heading); letter-spacing:-.045em; margin:0 0 7px; }
-.sell-plate-card__lead { color:#aabcce; font-size:12px; line-height:1.75; margin:0 0 26px; }
-.sell-plate-card__form label { display:block; color:#d7e2ec; font-size:12px; font-weight:600; margin:0 0 11px; }
-.sell-license-field {
-    position:relative; display:flex; align-items:stretch; width:100%;
-    height:84px; overflow:hidden; border:3px solid #d4ab22; border-radius:11px;
-    background:linear-gradient(#ffda4b, #f3c62d); box-shadow:0 7px 0 rgba(0,0,0,.12), 0 10px 28px rgba(0,0,0,.2);
-}
-.sell-license-field:focus-within { outline:3px solid rgba(165,198,230,.65); outline-offset:4px; }
-.sell-license-field__eu { flex:none; width:46px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:13px 0 9px; background:#154c99; color:#fff; }
-.sell-license-field__stars { font-size:16px; letter-spacing:0; color:#f0e5a2; }
-.sell-license-field__eu strong { font:700 16px var(--font-body); }
-.sell-license-field input {
-    min-width:0; width:100%; flex:1; height:100%; border:0; padding:0 13px;
-    color:#151a20; background:transparent; font:750 clamp(23px, 2.25vw, 33px)/1 var(--font-heading);
-    text-align:center; letter-spacing:.07em; text-transform:uppercase; outline:none; box-shadow:none;
-}
-.sell-license-field input::placeholder { color:#4d451e; opacity:.77; }
-.sell-plate-card__hint { margin: 12px 0 19px; font-size:10px; color:#91a8bd; line-height:1.4; }
-.sell-plate-card__submit {
-    display:flex; align-items:center; justify-content:space-between; width:100%; gap:15px;
-    min-height:49px; padding:12px 17px; border:1px solid rgba(255,255,255,.1);
-    border-radius:9px; background:#6285ad; color:#fff; cursor:pointer;
-    font:600 13px var(--font-body); transition:background .2s ease, transform .2s ease;
-}
-.sell-plate-card__submit:hover { background:#7397be; transform:translateY(-1px); }
-.sell-plate-card__submit:focus-visible { outline:2px solid #d5e6f7; outline-offset:3px; }
-.sell-plate-card__submit span { font-size:20px; }
-.sell-plate-card__feedback { font-size:11px; line-height:1.7; color:#d7e9f6; }
-.sell-plate-card__feedback:not(:empty) { margin-top:16px; padding:13px 14px; background:#142a3b; border:1px solid rgba(148,188,221,.3); border-radius:9px; }
-.sell-plate-card__feedback.is-error { color:#ffd6d6; background:#2d2029; border-color:rgba(247,148,154,.35); }
-.sell-plate-card__feedback p { margin:0; }
-.sell-plate-card__feedback a { display:inline-block; margin-top:8px; text-decoration:none; color:#e5f1ff; font-weight:700; }
-.sell-plate-card__feedback a:hover { color:#fff; }
-.sell-plate-card__footer { display:flex; gap:8px; padding-top:19px; border-top:1px solid rgba(177,199,219,.13); margin-top:23px; color:#8399ac; font-size:10px; line-height:1.6; }
-.sell-plate-card__footer > span { color:#acc5df; font-size:15px; }
-.sell-hero-v2__under { justify-self:end; max-width:490px; padding:16px 5px 0; text-align:right; color:#7894ae; font-size:10px; letter-spacing:.15em; font-weight:600; }
-.sell-hero-v2__under span { color:#accae6; margin-right:7px; font-size:14px; }
-@media (max-width:1080px) {
-  .sell-hero-v2__layout { grid-template-columns:minmax(0, 1fr) minmax(325px, .95fr); gap: 35px; }
-  .sell-hero--plate h1 { font-size:clamp(40px,5.2vw,61px); }
-  .sell-plate-card { padding:24px; }
-  .sell-license-field input { font-size:25px; letter-spacing:.04em; }
-}
-@media (max-width:820px) {
-  .sell-hero-v2__layout { grid-template-columns:1fr; min-height:0; gap:0; }
-  .sell-hero--plate .sell-hero-v2__copy { padding:30px 0 16px; }
-  .sell-hero--plate .sell-breadcrumb { margin-bottom:36px; }
-  .sell-hero-v2__right { padding:16px 0 53px; }
-  .sell-plate-card { max-width:600px; justify-self:start; }
-  .sell-hero-v2__under { justify-self:start; }
-}
-@media (max-width:540px) {
-  .sell-hero--plate h1 { font-size:clamp(39px,10vw,54px); }
-  .sell-hero--plate .sell-hero__lead { font-size:13px; }
-  .sell-plate-card { border-radius:14px; padding:21px; }
-  .sell-plate-card__top { margin-bottom:20px; }
-  .sell-license-field { height:72px; }
-  .sell-license-field input { font-size:clamp(22px,6.3vw,29px); padding:0 8px; }
-  .sell-license-field__eu { width:39px; padding:10px 0 7px; }
-  .sell-hero-v2__benefits { gap:10px 20px; }
-  .sell-hero-v2__right { padding-bottom:39px; }
-}
-@media (prefers-reduced-motion:reduce) { .sell-plate-card__submit { transition:none; } .sell-plate-card__submit:hover { transform:none; } }
+
+
+
+/* KLABEN Auto verkopen V3 — guided valuation; visually consistent with showroom */
+.sell-journey { scroll-margin-top: 92px; padding: clamp(76px,7vw,115px) 0; background: linear-gradient(165deg, #0e1924 0%, #0b1520 70%, #101c29 100%); border-bottom: 1px solid rgba(166,194,220,.1); }
+.sell-journey[hidden] { display:none !important; }
+.sell-journey__layout { display:grid; grid-template-columns: minmax(245px,.79fr) minmax(0,1.21fr); gap:clamp(35px,5vw,96px); align-items:start; }
+.sell-journey__aside { padding-top:16px; }
+.sell-journey__aside h2 { font:600 clamp(29px,3.25vw,49px)/1.17 var(--font-heading); letter-spacing:-.055em; max-width:470px; margin:19px 0 22px; }
+.sell-journey__aside h2 span { color:#9bb6d2; }
+.sell-journey__aside > p:not(.sell-eyebrow) { max-width:440px; color:#a9bece; line-height:1.85; font-size:13px; }
+.sell-journey__aside strong { color:#e6eef7; }
+.sell-journey__timeline { list-style:none; display:grid; gap:0; padding:0; margin:36px 0 20px; }
+.sell-journey__timeline li { display:flex; align-items:start; position:relative; gap:17px; padding:0 0 25px; color:#758da5; }
+.sell-journey__timeline li:not(:last-child)::after { content:""; position:absolute; width:1px; top:30px; bottom:5px; left:19px; background:rgba(159,191,223,.18); }
+.sell-journey__timeline li>span { display:grid; place-items:center; width:39px; height:39px; flex:none; border-radius:50%; background:#142738; border:1px solid #35485c; font-size:12px; color:#8aa3bb; }
+.sell-journey__timeline li.is-complete>span, .sell-journey__timeline li.is-current>span { background:#668bb3; color:white; border-color:#93b1cf; }
+.sell-journey__timeline li strong { display:block; color:#8ba3b9; font:600 13px var(--font-body); margin:4px 0; }
+.sell-journey__timeline li.is-current strong, .sell-journey__timeline li.is-complete strong { color:#edf5fc; }
+.sell-journey__timeline li small { display:block; font-size:11px; color:#8198ac; }
+.sell-journey__aside .sell-journey__aside-note { font-size:10px !important; color:#849eb5 !important; line-height:1.8; }
+.sell-journey__panel { min-width:0; border:1px solid rgba(173,200,228,.19); border-radius:20px; padding:clamp(24px,3.2vw,46px); background:linear-gradient(148deg,#182b3d,#112130 75%); box-shadow:0 27px 55px rgba(0,0,0,.18); }
+.sell-journey__panel-head { display:flex; justify-content:space-between; gap:18px; align-items:start; }
+.sell-journey__panel-head h3 { font:600 clamp(20px,2.1vw,29px)/1.3 var(--font-heading); margin:11px 0 0; letter-spacing:-.035em; outline:none; }
+.sell-journey__panel .sell-eyebrow { margin:0; }
+.sell-journey__step-counter { flex:none; border:1px solid rgba(167,191,212,.23); border-radius:8px; padding:8px 10px; font:600 11px var(--font-body); color:#c4d6e7; }
+.sell-journey__progress { height:3px; margin:25px 0 19px; border-radius:4px; background:#263e52; overflow:hidden; }
+.sell-journey__progress>span { display:block; height:100%; width:33.333%; background:#9ebddd; transition:width .3s ease; }
+.sell-journey__notice { border:1px solid rgba(161,192,222,.18); background:#122536; padding:12px 15px; border-radius:8px; font:400 11px/1.7 var(--font-body); color:#adc6dc; margin-bottom:25px; }
+.sell-journey__pane { border:0; padding:0; margin:0; min-width:0; }
+.sell-journey__pane[hidden] { display:none !important; }
+.sell-journey__hint { color:#93aabf; font-size:12px; line-height:1.75; margin:0 0 20px; }
+.sell-journey__fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:19px 17px; }
+.sell-journey__fields label { display:grid; gap:9px; color:#d6e1ed; font:600 12px var(--font-body); }
+.sell-journey__fields .sell-journey__label-text { display:block; color:#d6e1ed; }
+.sell-journey__fields .sell-journey__label-text b, .sell-journey__label>span { color:#91b8e2; }
+.sell-journey__fields small { color:#91a6b9; font-weight:400; }
+.sell-journey__fields input,.sell-journey__fields select { min-width:0; width:100%; border:1px solid rgba(157,185,210,.25); border-radius:9px; background:#0e1e2c; color:#edf3f8; min-height:47px; padding:11px 13px; font:400 12px var(--font-body); }
+.sell-journey__fields input::placeholder { color:#7993a8; }
+.sell-journey__fields input:focus-visible,.sell-journey__fields select:focus-visible,.sell-journey__choices input:focus-visible + span { outline:2px solid #9cc3e6; outline-offset:3px; }
+.sell-journey__fields [aria-invalid=true] { border-color:#e6999d; }
+.sell-journey__label { color:#d5e1ee; font-weight:600; font-size:13px; margin:0 0 13px; }
+.sell-journey__choice-block { margin-bottom:24px; }
+.sell-journey__choices { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+.sell-journey__choices label { cursor:pointer; min-width:0; }
+.sell-journey__choices input { position:absolute; opacity:0; width:1px; height:1px; }
+.sell-journey__choices label span { display:block; min-height:99px; border:1px solid rgba(168,194,218,.22); padding:15px 12px; border-radius:10px; background:#142638; transition:border-color .2s,background .2s; }
+.sell-journey__choices strong { display:block; font-size:12px; margin-bottom:7px; color:#dbe7f3; }
+.sell-journey__choices small { display:block; line-height:1.5; font-size:10px; color:#8fa9bf; }
+.sell-journey__choices input:checked + span { background:#263d54; border-color:#9bbcdc; }
+.sell-journey__choices label:hover span { border-color:#688eae; }
+.sell-journey__error:not([hidden]) { margin:18px 0 0; padding:12px 14px; color:#f9d1d1; background:#31232a; border:1px solid #855860; border-radius:9px; font-size:12px; }
+.sell-journey__actions { margin-top:27px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.sell-journey__actions button { min-height:48px; padding:12px 18px; font:600 12px var(--font-body); border-radius:9px; cursor:pointer; }
+.sell-journey__back { color:#c1d7eb; background:transparent; border:1px solid rgba(149,187,220,.3); }
+.sell-journey__next-btn,.sell-journey__continue { color:white; margin-left:auto; background:#6488af; border:1px solid rgba(187,217,246,.15); }
+.sell-journey__next-btn:hover,.sell-journey__continue:hover { background:#789ac0; }
+.sell-journey__actions button:focus-visible { outline:2px solid #c6e2f7; outline-offset:3px; }
+.sell-journey__result { border:1px solid rgba(166,198,225,.22); border-radius:13px; background:#1a2e43; padding:23px; }
+.sell-journey__result-tag { color:#acc7df; font-size:10px; font-weight:700; letter-spacing:.12em; line-height:1.6; }
+.sell-journey__range { display:block; font:650 clamp(25px,3vw,39px)/1.3 var(--font-heading); color:#f7fafd; margin:17px 0; letter-spacing:-.035em; }
+.sell-journey__result-desc,.sell-journey__next { color:#a6bfd3; font:400 11px/1.85 var(--font-body); margin:0; }
+.sell-journey__result-desc strong { color:#e1eaf3; }
+.sell-journey__summary { display:grid; margin:23px 0; }
+.sell-journey__summary>div { display:flex; justify-content:space-between; gap:15px; border-bottom:1px solid rgba(171,201,228,.12); padding:10px 0; font-size:12px; }
+.sell-journey__summary span { color:#95aec2; }
+.sell-journey__summary strong { color:#e9f3fb; text-align:right; }
+.sell-journey__next { margin-top:15px; }
+@media(max-width:1000px){.sell-journey__layout{grid-template-columns:1fr;gap:32px}.sell-journey__aside{padding:0}.sell-journey__timeline{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:23px 0}.sell-journey__timeline li{padding:0}.sell-journey__timeline li::after{display:none}.sell-journey__panel{max-width:800px}.sell-journey__aside-note{max-width:760px}}
+@media(max-width:600px){.sell-journey{scroll-margin-top:72px;padding:60px 0}.sell-journey__panel{border-radius:14px;padding:22px 18px}.sell-journey__timeline{gap:4px}.sell-journey__timeline li{gap:7px}.sell-journey__timeline li>span{width:30px;height:30px;font-size:10px}.sell-journey__timeline li strong{font-size:10px}.sell-journey__timeline li small{font-size:9px}.sell-journey__fields{grid-template-columns:1fr}.sell-journey__choices{grid-template-columns:1fr}.sell-journey__choices label span{min-height:0}.sell-journey__panel-head h3{font-size:21px}.sell-journey__step-counter{padding:7px}.sell-journey__range{font-size:25px}.sell-journey__actions{flex-wrap:wrap}.sell-journey__actions button{min-width:0}}
+@media(prefers-reduced-motion:reduce){.sell-journey__progress>span,.sell-journey__choices label span{transition:none}}
+
+
+
+/* KLABEN Auto verkopen V3 — guided valuation; visually consistent with showroom */
+.sell-journey { scroll-margin-top: 92px; padding: clamp(76px,7vw,115px) 0; background: linear-gradient(165deg, #0e1924 0%, #0b1520 70%, #101c29 100%); border-bottom: 1px solid rgba(166,194,220,.1); }
+.sell-journey[hidden] { display:none !important; }
+.sell-journey__layout { display:grid; grid-template-columns: minmax(245px,.79fr) minmax(0,1.21fr); gap:clamp(35px,5vw,96px); align-items:start; }
+.sell-journey__aside { padding-top:16px; }
+.sell-journey__aside h2 { font:600 clamp(29px,3.25vw,49px)/1.17 var(--font-heading); letter-spacing:-.055em; max-width:470px; margin:19px 0 22px; }
+.sell-journey__aside h2 span { color:#9bb6d2; }
+.sell-journey__aside > p:not(.sell-eyebrow) { max-width:440px; color:#a9bece; line-height:1.85; font-size:13px; }
+.sell-journey__aside strong { color:#e6eef7; }
+.sell-journey__timeline { list-style:none; display:grid; gap:0; padding:0; margin:36px 0 20px; }
+.sell-journey__timeline li { display:flex; align-items:start; position:relative; gap:17px; padding:0 0 25px; color:#758da5; }
+.sell-journey__timeline li:not(:last-child)::after { content:""; position:absolute; width:1px; top:30px; bottom:5px; left:19px; background:rgba(159,191,223,.18); }
+.sell-journey__timeline li>span { display:grid; place-items:center; width:39px; height:39px; flex:none; border-radius:50%; background:#142738; border:1px solid #35485c; font-size:12px; color:#8aa3bb; }
+.sell-journey__timeline li.is-complete>span, .sell-journey__timeline li.is-current>span { background:#668bb3; color:white; border-color:#93b1cf; }
+.sell-journey__timeline li strong { display:block; color:#8ba3b9; font:600 13px var(--font-body); margin:4px 0; }
+.sell-journey__timeline li.is-current strong, .sell-journey__timeline li.is-complete strong { color:#edf5fc; }
+.sell-journey__timeline li small { display:block; font-size:11px; color:#8198ac; }
+.sell-journey__aside .sell-journey__aside-note { font-size:10px !important; color:#849eb5 !important; line-height:1.8; }
+.sell-journey__panel { min-width:0; border:1px solid rgba(173,200,228,.19); border-radius:20px; padding:clamp(24px,3.2vw,46px); background:linear-gradient(148deg,#182b3d,#112130 75%); box-shadow:0 27px 55px rgba(0,0,0,.18); }
+.sell-journey__panel-head { display:flex; justify-content:space-between; gap:18px; align-items:start; }
+.sell-journey__panel-head h3 { font:600 clamp(20px,2.1vw,29px)/1.3 var(--font-heading); margin:11px 0 0; letter-spacing:-.035em; outline:none; }
+.sell-journey__panel .sell-eyebrow { margin:0; }
+.sell-journey__step-counter { flex:none; border:1px solid rgba(167,191,212,.23); border-radius:8px; padding:8px 10px; font:600 11px var(--font-body); color:#c4d6e7; }
+.sell-journey__progress { height:3px; margin:25px 0 19px; border-radius:4px; background:#263e52; overflow:hidden; }
+.sell-journey__progress>span { display:block; height:100%; width:33.333%; background:#9ebddd; transition:width .3s ease; }
+.sell-journey__notice { border:1px solid rgba(161,192,222,.18); background:#122536; padding:12px 15px; border-radius:8px; font:400 11px/1.7 var(--font-body); color:#adc6dc; margin-bottom:25px; }
+.sell-journey__pane { border:0; padding:0; margin:0; min-width:0; }
+.sell-journey__pane[hidden] { display:none !important; }
+.sell-journey__hint { color:#93aabf; font-size:12px; line-height:1.75; margin:0 0 20px; }
+.sell-journey__fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:19px 17px; }
+.sell-journey__fields label { display:grid; gap:9px; color:#d6e1ed; font:600 12px var(--font-body); }
+.sell-journey__fields .sell-journey__label-text { display:block; color:#d6e1ed; }
+.sell-journey__fields .sell-journey__label-text b, .sell-journey__label>span { color:#91b8e2; }
+.sell-journey__fields small { color:#91a6b9; font-weight:400; }
+.sell-journey__fields input,.sell-journey__fields select { min-width:0; width:100%; border:1px solid rgba(157,185,210,.25); border-radius:9px; background:#0e1e2c; color:#edf3f8; min-height:47px; padding:11px 13px; font:400 12px var(--font-body); }
+.sell-journey__fields input::placeholder { color:#7993a8; }
+.sell-journey__fields input:focus-visible,.sell-journey__fields select:focus-visible,.sell-journey__choices input:focus-visible + span { outline:2px solid #9cc3e6; outline-offset:3px; }
+.sell-journey__fields [aria-invalid=true] { border-color:#e6999d; }
+.sell-journey__label { color:#d5e1ee; font-weight:600; font-size:13px; margin:0 0 13px; }
+.sell-journey__choice-block { margin-bottom:24px; }
+.sell-journey__choices { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+.sell-journey__choices label { cursor:pointer; min-width:0; }
+.sell-journey__choices input { position:absolute; opacity:0; width:1px; height:1px; }
+.sell-journey__choices label span { display:block; min-height:99px; border:1px solid rgba(168,194,218,.22); padding:15px 12px; border-radius:10px; background:#142638; transition:border-color .2s,background .2s; }
+.sell-journey__choices strong { display:block; font-size:12px; margin-bottom:7px; color:#dbe7f3; }
+.sell-journey__choices small { display:block; line-height:1.5; font-size:10px; color:#8fa9bf; }
+.sell-journey__choices input:checked + span { background:#263d54; border-color:#9bbcdc; }
+.sell-journey__choices label:hover span { border-color:#688eae; }
+.sell-journey__error:not([hidden]) { margin:18px 0 0; padding:12px 14px; color:#f9d1d1; background:#31232a; border:1px solid #855860; border-radius:9px; font-size:12px; }
+.sell-journey__actions { margin-top:27px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.sell-journey__actions button { min-height:48px; padding:12px 18px; font:600 12px var(--font-body); border-radius:9px; cursor:pointer; }
+.sell-journey__back { color:#c1d7eb; background:transparent; border:1px solid rgba(149,187,220,.3); }
+.sell-journey__next-btn,.sell-journey__continue { color:white; margin-left:auto; background:#6488af; border:1px solid rgba(187,217,246,.15); }
+.sell-journey__next-btn:hover,.sell-journey__continue:hover { background:#789ac0; }
+.sell-journey__actions button:focus-visible { outline:2px solid #c6e2f7; outline-offset:3px; }
+.sell-journey__result { border:1px solid rgba(166,198,225,.22); border-radius:13px; background:#1a2e43; padding:23px; }
+.sell-journey__result-tag { color:#acc7df; font-size:10px; font-weight:700; letter-spacing:.12em; line-height:1.6; }
+.sell-journey__range { display:block; font:650 clamp(25px,3vw,39px)/1.3 var(--font-heading); color:#f7fafd; margin:17px 0; letter-spacing:-.035em; }
+.sell-journey__result-desc,.sell-journey__next { color:#a6bfd3; font:400 11px/1.85 var(--font-body); margin:0; }
+.sell-journey__result-desc strong { color:#e1eaf3; }
+.sell-journey__summary { display:grid; margin:23px 0; }
+.sell-journey__summary>div { display:flex; justify-content:space-between; gap:15px; border-bottom:1px solid rgba(171,201,228,.12); padding:10px 0; font-size:12px; }
+.sell-journey__summary span { color:#95aec2; }
+.sell-journey__summary strong { color:#e9f3fb; text-align:right; }
+.sell-journey__next { margin-top:15px; }
+@media(max-width:1000px){.sell-journey__layout{grid-template-columns:1fr;gap:32px}.sell-journey__aside{padding:0}.sell-journey__timeline{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:23px 0}.sell-journey__timeline li{padding:0}.sell-journey__timeline li::after{display:none}.sell-journey__panel{max-width:800px}.sell-journey__aside-note{max-width:760px}}
+@media(max-width:600px){.sell-journey{scroll-margin-top:72px;padding:60px 0}.sell-journey__panel{border-radius:14px;padding:22px 18px}.sell-journey__timeline{gap:4px}.sell-journey__timeline li{gap:7px}.sell-journey__timeline li>span{width:30px;height:30px;font-size:10px}.sell-journey__timeline li strong{font-size:10px}.sell-journey__timeline li small{font-size:9px}.sell-journey__fields{grid-template-columns:1fr}.sell-journey__choices{grid-template-columns:1fr}.sell-journey__choices label span{min-height:0}.sell-journey__panel-head h3{font-size:21px}.sell-journey__step-counter{padding:7px}.sell-journey__range{font-size:25px}.sell-journey__actions{flex-wrap:wrap}.sell-journey__actions button{min-width:0}}
+@media(prefers-reduced-motion:reduce){.sell-journey__progress>span,.sell-journey__choices label span{transition:none}}

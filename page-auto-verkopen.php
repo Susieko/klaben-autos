@@ -53,19 +53,7 @@ $hero_image = get_theme_file_uri('/assets/images/cars/mercedes.png');
     </div>
 </section>
 
-<section class="sell-process" aria-labelledby="sell-process-title">
-    <div class="container">
-        <div class="sell-section-heading">
-            <div><p class="sell-eyebrow">ZO WERKT HET</p><h2 id="sell-process-title">Eenvoudig. Transparant. Persoonlijk.</h2></div>
-            <p>Drie heldere stappen, zonder onnodige omwegen.</p>
-        </div>
-        <div class="sell-steps">
-            <article class="sell-step reveal"><span class="sell-step__number">01</span><div><h3>Vertel over je auto</h3><p>Vul de belangrijkste voertuiggegevens in. Meer is niet nodig om te beginnen.</p></div></article>
-            <article class="sell-step reveal"><span class="sell-step__number">02</span><div><h3>We bekijken de details</h3><p>In een echte verkoopdienst zou hier een persoonlijke beoordeling volgen.</p></div></article>
-            <article class="sell-step reveal"><span class="sell-step__number">03</span><div><h3>Een duidelijk voorstel</h3><p>Geen verborgen stappen. Dit demo-project laat alleen de aanvraagervaring zien.</p></div></article>
-        </div>
-    </div>
-</section>
+<?php get_template_part('template-parts/sell-journey'); ?>
 
 <section id="verkoopformulier" class="sell-application" aria-labelledby="sell-application-title">
     <div class="container sell-application__layout">
@@ -86,6 +74,7 @@ $hero_image = get_theme_file_uri('/assets/images/cars/mercedes.png');
                 </div>
             <?php endif; ?>
             <form id="klaben-sell-form" class="sell-form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post">
+                <?php get_template_part('template-parts/sell-review'); ?>
                 <input type="hidden" name="action" value="klaben_demo_vehicle_submission">
                 <?php wp_nonce_field('klaben_demo_vehicle_submission', 'klaben_demo_nonce'); ?>
                 <div class="sell-honeypot" aria-hidden="true"><label for="sell-company">Laat dit veld leeg</label><input type="text" id="sell-company" name="klaben_company" tabindex="-1" autocomplete="off"></div>
