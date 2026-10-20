@@ -146,17 +146,15 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
                 >
                     Bekijk auto’s
                 </a>
-
-                <a
-                    class="button button--secondary"
-                    href="#waarom-klaben"
-                >
-                    Zo werkt het
-
-                    <span class="hero__play" aria-hidden="true">
-                      ↓
-                    </span>
-                </a>
+<a
+    class="button button--secondary"
+    href="#klaben-process-title"
+>
+    Zo werkt het
+    <span class="hero__play" aria-hidden="true">
+        ↓
+    </span>
+</a>
 
             </div>
 

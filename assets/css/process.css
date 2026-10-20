@@ -483,3 +483,14 @@
         transform: none;
     }
 }
+
+/* KLABEN — Process section anchor */
+#klaben-process-title {
+    scroll-margin-top: 110px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
