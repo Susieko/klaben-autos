@@ -1311,3 +1311,29 @@ body.home .site-footer {
 @media (prefers-reduced-motion: reduce) {
     .hero--layered .hero__road-glow { animation: none !important; opacity: .08; }
 }
+
+/* KLABEN — Responsive hero overlap fix */
+
+/* Reset the desktop positioning on tablets */
+@media (max-width: 900px) {
+  body.home .hero--layered .hero__cards {
+    top: auto;
+    right: auto;
+  }
+}
+
+/* Keep the mobile hero clean and focused */
+@media (max-width: 650px) {
+  body.home .hero--layered .hero__cards {
+    display: none;
+  }
+
+  body.home .hero--layered .hero-search-wrap {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    margin-top: 28px;
+  }
+}
