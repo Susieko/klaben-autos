@@ -2,6 +2,8 @@
 
 **A cinematic automotive experience, built as a custom WordPress theme.**
 
+**[🚗 Explore the live demo](https://klaben-autos.freepage.cc/)** · **[View the source code](https://github.com/Susieko/klaben-autos)**
+
 <img width="1879" height="915" alt="homepage" src="https://github.com/user-attachments/assets/e4ed19ea-e61e-4035-b4fb-3df6f8df622c" />
 
 
