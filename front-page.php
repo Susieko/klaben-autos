@@ -129,7 +129,7 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
 
             <h1 class="hero__title">
                 Vind jouw volgende
-                <span>occasion.</span>
+                <span>occasion</span>
             </h1>
 
             <p class="hero__description">

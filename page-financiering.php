@@ -35,7 +35,7 @@ $car_title = $selected_car ? $selected_car['brand'] . ' ' . $selected_car['model
             </nav>
 
             <p class="finance-eyebrow">Financiering / Rekenvoorbeeld</p>
-            <h1 id="finance-hero-title">De auto die je wilt.<span>Een bedrag dat past.</span></h1>
+            <h1 id="finance-hero-title">De auto die je wilt<span>Een bedrag dat past</span></h1>
             <p class="finance-hero__lead">Ontdek wat jouw volgende auto per maand kan kosten. Pas de aanschafprijs, aanbetaling en looptijd aan en bekijk direct het rekenvoorbeeld.</p>
 
             <a class="button button--primary finance-cockpit__cta" href="#calculator">

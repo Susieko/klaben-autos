@@ -1,0 +1,203 @@
+/*
+ * KLABEN Autos — Editorial Typography Polish V1
+ * Built against user's 2026-10-20 KLABEN.zip.
+ * ONE opt-in, reversible layer — no layout, JS or markup changes.
+ * Loaded after all existing page styles.
+ *
+ * Type principles:
+ * - Poppins for headings, Inter for body, forms and buttons.
+ * - Interior headings use neutral white and typographic weight for hierarchy.
+ * - The homepage cinematic hero retains its signature blue highlight.
+ * - Keep blue as an accent for navigation, metadata, UI states and small rules.
+ */
+
+:root {
+  --klaben-type-title: clamp(40px, 4.6vw, 64px);
+  --klaben-type-section: clamp(30px, 3.1vw, 42px);
+  --klaben-type-card: clamp(18px, 1.6vw, 22px);
+  --klaben-type-prose: 15px;
+  --klaben-ink-primary: #f3f6fa;
+  --klaben-ink-secondary: #bfd0df;
+}
+
+/* Consistency without a blanket h1/h2 selector: protects card and widget UI. */
+.inventory-heading h1,
+.sell-hero--plate h1,
+.finance-hero--cockpit h1 {
+  font-family: var(--font-heading);
+  font-size: var(--klaben-type-title);
+  font-weight: 600;
+  line-height: 1.13;
+  letter-spacing: -.045em;
+  color: var(--klaben-ink-primary);
+  text-wrap: balance;
+}
+
+/* The showroom is driven by its photography, not by a half-blue headline. */
+.inventory-heading h1 span {
+  color: inherit;
+  font-weight: 600;
+}
+
+/* Selling gets distinctive hierarchy from scale and weight, not colour. */
+.sell-hero--plate h1 span {
+  color: inherit;
+  font-size: .88em;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+/* Finance is quieter, allowing the instrument cluster to supply the colour. */
+.finance-hero--cockpit h1 span {
+  color: inherit;
+  font-size: .94em;
+  font-weight: 500;
+}
+
+/* Journal is intentionally more editorial than the other page heroes. */
+.news-editorial__layout h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(45px, 5.6vw, 78px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -.055em;
+  color: var(--klaben-ink-primary);
+  text-wrap: balance;
+}
+.news-editorial__layout h1 em {
+  color: inherit;
+  font-size: .91em;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Standardise secondary headings without flattening each page's composition. */
+.klaben-process__heading,
+.finance-workspace__intro h2,
+.news-section-heading h2,
+.sell-application__main h2,
+.news-bottom h2 {
+  font-family: var(--font-heading);
+  font-size: var(--klaben-type-section);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.037em;
+  color: var(--klaben-ink-primary);
+}
+
+.klaben-process__heading span,
+.finance-workspace__intro h2 span,
+.news-section-heading h2 span,
+.news-bottom h2 span,
+.sell-application__main h2 span,
+.sell-journey__aside h2 span {
+  color: inherit;
+  font-weight: 500;
+}
+
+.sell-journey__aside h2 {
+  font-family: var(--font-heading);
+  font-size: var(--klaben-type-section);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.037em;
+  color: var(--klaben-ink-primary);
+}
+
+/* Unified metadata voice; don't force colours/layout on existing labels. */
+.hero__eyebrow,
+.section-heading__eyebrow,
+.klaben-process__eyebrow,
+.inventory-eyebrow,
+.sell-eyebrow,
+.finance-eyebrow,
+.news-kicker {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Section introductions were set anywhere from 12 to 14px. Give them a
+   consistent readable body size; preserve their existing width and margins. */
+.inventory-heading__copy > p:not(.inventory-eyebrow),
+.sell-hero--plate .sell-hero__lead,
+.finance-hero--cockpit .finance-hero__lead,
+.news-editorial__description p,
+.klaben-process__lead,
+.news-section-heading > p,
+.sell-application__intro,
+.finance-workspace__intro > p {
+  font-family: var(--font-body);
+  font-size: var(--klaben-type-prose);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+/* The story cards should read like editorial content, not microcopy. */
+.news-card__excerpt {
+  font-size: 13px;
+  line-height: 1.72;
+}
+.news-list--journal .news-card__read,
+.news-card__read {
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+.news-card__meta { font-size: 10px; }
+.news-article__content { font-size: 16px; line-height: 1.84; }
+.news-article__content h2 { font-size: clamp(25px, 2.3vw, 30px); }
+.news-article__content h3 { font-size: clamp(19px, 1.9vw, 23px); }
+
+/* Actions are Inter across templates, while navigation keeps its current look. */
+.button,
+.news-editorial__cta,
+.sell-hero-v2__manual,
+.sell-plate-card__submit {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+/* The small sidebar controls were previously 12px; boost carefully.
+   Do not modify the five-option repayment grid or licence-plate input. */
+.inventory-field input,
+.inventory-field select,
+.inventory-sort-form select,
+.finance-field select {
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+.inventory-field > span,
+.inventory-sort-form label,
+.finance-field,
+.finance-terms legend {
+  font-size: 12px;
+}
+
+/* Preserve the cinematic main-page hero and its intentionally coloured word.
+   All changes here apply to interior pages or lower-page sections only. */
+@media (max-width: 700px) {
+  :root {
+    --klaben-type-title: clamp(35px, 9.1vw, 46px);
+    --klaben-type-section: clamp(27px, 7vw, 34px);
+    --klaben-type-prose: 14px;
+  }
+  .news-editorial__layout h1 {
+    font-size: clamp(39px, 10vw, 53px);
+  }
+  .sell-hero--plate h1 span {
+    font-size: .92em;
+  }
+  .inventory-heading h1,
+  .sell-hero--plate h1,
+  .finance-hero--cockpit h1 {
+    letter-spacing: -.04em;
+  }
+  .news-article__content { font-size: 15px; }
+  .inventory-field input,
+  .inventory-field select,
+  .inventory-sort-form select,
+  .finance-field select { font-size: 16px; }
+}

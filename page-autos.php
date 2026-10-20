@@ -48,7 +48,7 @@ get_header();
     <div class="container inventory-heading__inner">
         <div class="inventory-heading__copy reveal">
             <p class="inventory-eyebrow">DE KLABEN SELECTIE <span aria-hidden="true">—</span> MET AANDACHT GEKOZEN</p>
-            <h1>Ontdek jouw <span>volgende auto.</span></h1>
+            <h1>Ontdek jouw <span>volgende auto</span></h1>
             <p>Van sportieve sedans tot karaktervolle cabrio’s. Ontdek onze zorgvuldig geselecteerde occasions.</p>
             <ul class="inventory-heading__perks" aria-label="Waarom KLABEN Autos">
                 <li class="inventory-heading__perk">

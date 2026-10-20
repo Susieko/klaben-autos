@@ -28,7 +28,7 @@ get_header();
             <span class="news-editorial__index" aria-hidden="true">VERHALEN MET KARAKTER</span>
         </div>
         <div class="news-editorial__layout">
-            <h1 id="news-title">Meer dan alleen <em>de rit.</em></h1>
+            <h1 id="news-title">Meer dan alleen <em>de rit</em></h1>
             <div class="news-editorial__description">
                 <p>Verhalen over bijzondere auto's, slimme keuzes en alles wat rijden mooi maakt. Met aandacht samengesteld.</p>
                 <a href="#verhalen" class="news-editorial__cta">Ontdek de verhalen <span aria-hidden="true">↓</span></a>

@@ -19,7 +19,7 @@ $hero_image = get_theme_file_uri('/assets/images/cars/mercedes.png');
                 <span aria-current="page">Auto verkopen</span>
             </nav>
             <p class="sell-eyebrow sell-hero-v2__eyebrow">EENVOUDIG VERKOPEN · KLABEN AUTOS</p>
-            <h1 id="sell-hero-title">Jouw auto.<br><span>Onze interesse.</span></h1>
+            <h1 id="sell-hero-title">Jouw auto<br><span>Onze interesse</span></h1>
             <p class="sell-hero__lead">Benieuwd naar de mogelijkheden voor jouw auto? Begin met je kenteken en vertel ons daarna wat meer over jouw voertuig.</p>
             <div class="sell-hero-v2__benefits" aria-label="Voordelen van de aanpak">
                 <span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65"><path d="M12 3 20 7v5c0 5-4 8-8 9-4-1-8-4-8-9V7l8-4Z"/><path d="m9 12 2 2 4-4"/></svg> Helder proces</span>

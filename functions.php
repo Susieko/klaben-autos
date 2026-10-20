@@ -2,6 +2,7 @@
 require_once get_theme_file_path('/includes/finance-home-assets.php');
 require_once get_theme_file_path('/includes/sell-review-assets.php');
 require_once get_theme_file_path('/includes/homepage-wheel-pointer-assets.php');
+require_once get_theme_file_path('/includes/typography-polish-assets.php');
 
 
 function klaben_autos_asset_version(string $relative_path): string
