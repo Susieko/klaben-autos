@@ -2,7 +2,8 @@
 /** @var array<string,mixed> $car */
 $images = klaben_vehicle_images($car);
 $car_title = $car['brand'] . ' ' . $car['model'];
-$similar = array_values(array_filter(klaben_get_vehicles(), static fn ($candidate) => $candidate['slug'] !== $car['slug']));
+$similar = klaben_related_vehicle_records($car);
+$related_articles = klaben_related_article_posts($car);
 ?>
 <section class="vehicle-view container">
     <nav class="vehicle-breadcrumb" aria-label="Broodkruimelnavigatie">
@@ -46,15 +47,43 @@ $similar = array_values(array_filter(klaben_get_vehicles(), static fn ($candidat
                 <?php endforeach; ?>
             </dl>
             <a class="button button--primary vehicle-spec-panel__cta" href="<?php echo esc_url(add_query_arg('auto', $car['slug'], home_url('/financiering/'))); ?>">Bereken maandbedrag ↗</a>
+            <?php if (is_singular('klaben_auto') && shortcode_exists('fluentform')): ?>
+                <a class="vehicle-enquiry__jump" href="#voertuig-aanvraag">Vraag informatie aan <span aria-hidden="true">â†—</span></a>
+            <?php endif; ?>
             <a class="vehicle-finance-back" href="<?php echo esc_url(home_url('/autos/')); ?>">← Bekijk alle auto’s</a>
             <p class="vehicle-spec-panel__note">Dit project is een demonstratie van een fictieve autowebsite.</p>
         </aside>
     </div>
+    <?php if (is_singular('klaben_auto') && shortcode_exists('fluentform')): ?>
+        <?php require get_theme_file_path('/includes/vehicle-enquiry.php'); ?>
+    <?php endif; ?>
     <?php if ($similar): ?>
         <section class="vehicle-related"><div class="vehicle-related__heading"><div><p class="inventory-eyebrow">OOK INTERESSANT</p><h2>Misschien iets voor jou.</h2></div><a href="<?php echo esc_url(home_url('/autos/')); ?>">Het hele aanbod →</a></div>
             <div class="car-grid inventory-grid">
                 <?php foreach (array_slice($similar, 0, 2) as $index => $car): ?>
                     <?php $card_delay = $index * 75; require get_theme_file_path('/includes/car-card.php'); ?>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if ($related_articles): ?>
+        <section class="vehicle-articles" aria-labelledby="vehicle-articles-heading">
+            <div class="vehicle-related__heading">
+                <div><p class="inventory-eyebrow">KLABEN JOURNAL</p><h2 id="vehicle-articles-heading">Verder lezen.</h2></div>
+                <a href="<?php echo esc_url(home_url('/nieuws/')); ?>">Alle verhalen →</a>
+            </div>
+            <div class="vehicle-articles__grid">
+                <?php foreach ($related_articles as $article): ?>
+                    <a class="vehicle-article" href="<?php echo esc_url(get_permalink($article->ID)); ?>">
+                        <?php if (has_post_thumbnail($article->ID)): ?>
+                            <?php echo get_the_post_thumbnail($article->ID, 'medium_large', ['loading' => 'lazy', 'decoding' => 'async']); ?>
+                        <?php endif; ?>
+                        <span class="vehicle-article__content">
+                            <span class="inventory-eyebrow">KLABEN JOURNAL</span>
+                            <strong><?php echo esc_html(get_the_title($article->ID)); ?></strong>
+                            <span class="vehicle-article__link">Lees het verhaal ↗</span>
+                        </span>
+                    </a>
                 <?php endforeach; ?>
             </div>
         </section>

@@ -16,7 +16,7 @@
                         class="site-footer__logo"
                         src="<?php echo esc_url(
                             get_theme_file_uri(
-                                '/assets/images/logo/klaben-logo.png'
+                                '/assets/images/logo/klaben-logo.webp'
                             )
                         ); ?>"
                         alt="KLABEN Autos"

@@ -1,0 +1,162 @@
+/* KLABEN CRM 0.2 — admin-only styles. Scoped: no WordPress or public-site overrides. */
+.klaben-crm-dashboard {
+  --kc-ink: #17283b;
+  --kc-muted: #68788a;
+  --kc-blue: #2563eb;
+  --kc-stroke: #e4eaf1;
+  --kc-surface: #ffffff;
+  max-width: 1720px;
+  margin: 22px 26px 50px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+  color: var(--kc-ink);
+  -webkit-font-smoothing: antialiased;
+}
+.klaben-crm-dashboard * { box-sizing: border-box; }
+.klaben-crm-dashboard .notice { margin: 16px 0; }
+.klaben-crm-hero {
+  min-height: 198px;
+  padding: 34px 39px;
+  border-radius: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  background: radial-gradient(ellipse 300px 210px at 77% 105%,rgba(74,144,226,.19),transparent),
+    linear-gradient(112deg, #101f34 0%, #152f4e 66%, #193b61 100%);
+  border: 1px solid #163251;
+  box-shadow: 0 10px 26px rgba(29,49,77,.12);
+  color: white;
+}
+.klaben-crm-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #c5d9f0; font-size: 11px; font-weight: 750;
+  letter-spacing: .12em;
+}
+.klaben-crm-eyebrow .dashicons { width: 18px; height: 18px; font-size: 18px; color: #80b3ef; }
+.klaben-crm-eyebrow-divider { width: 1px; height: 13px; background: rgba(255,255,255,.35); margin: 0 4px; }
+.klaben-crm-hero h1 {
+  color: #fff; font-size: clamp(27px,2.3vw,38px); font-weight: 750;
+  margin: 19px 0 9px; line-height: 1.15; letter-spacing: -.035em;
+}
+.klaben-crm-hero p { margin: 0; max-width: 580px; color: #bed0e3; font-size: 13.5px; line-height: 1.65; }
+.klaben-crm-live {
+  display: inline-flex; flex: 0 0 auto; gap: 9px; align-items: center;
+  padding: 9px 13px; border-radius: 999px;
+  border: 1px solid rgba(173, 208, 245,.3);
+  background: rgba(255,255,255,.065);
+  color: #dfedff; font-size: 12px; font-weight: 600;
+  margin-top: 2px;
+}
+.klaben-crm-live > span { width: 7px; height: 7px; border-radius: 50%; background: #55d3a2; box-shadow: 0 0 0 3px rgba(85,211,162,.14); }
+.klaben-crm-metrics {
+  display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 16px; margin: 18px 0 22px;
+}
+.klaben-crm-metric {
+  position: relative; min-height: 143px; padding: 24px 24px 20px;
+  background: #fff; border: 1px solid var(--kc-stroke);
+  border-radius: 13px; box-shadow: 0 3px 12px rgba(24,45,70,.035);
+}
+.klaben-crm-metric-label { display: block; color: var(--kc-muted); font-size: 12px; font-weight: 650; margin-bottom: 15px; }
+.klaben-crm-metric-number { display: block; font-size: 36px; color: #152b45; line-height: 1; letter-spacing: -.05em; font-weight: 750; font-variant-numeric: tabular-nums; }
+.klaben-crm-metric-icon {
+  position: absolute; right: 22px; top: 22px; display: grid; place-items: center;
+  width: 36px; height: 36px; line-height: 36px; border-radius: 10px;
+  color: #3f6fba; background: #eef5ff; font-size: 18px;
+}
+.klaben-crm-metric--new .klaben-crm-metric-icon { color: #a06c0a; background: #fff5d7; }
+.klaben-crm-metric--process .klaben-crm-metric-icon { color: #3968c5; background: #ebf1ff; }
+.klaben-crm-metric--done .klaben-crm-metric-icon { color: #16845b; background: #e6f7ef; }
+.klaben-crm-panel { background: var(--kc-surface); border: 1px solid var(--kc-stroke); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 25px rgba(33,53,81,.035); }
+.klaben-crm-panel-head { display: flex; gap: 20px; align-items: center; justify-content: space-between; padding: 28px 29px 20px; }
+.klaben-crm-section-kicker { display: block; font-size: 10px; font-weight: 800; letter-spacing: .15em; color: #5c80ba; margin-bottom: 7px; }
+.klaben-crm-panel h2 { padding: 0; margin: 0; font-size: 22px; font-weight: 750; letter-spacing: -.026em; color: #1b3049; }
+.klaben-crm-panel-head p { margin: 9px 0 0; color: var(--kc-muted); font-size: 12px; }
+.klaben-crm-panel-head p span { margin: 0 5px; }
+.klaben-crm-import .button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  border: 1px solid #ccd8e8; background: #fff; border-radius: 8px;
+  color: #25549a; font-size: 12px; font-weight: 650; padding: 7px 14px; min-height: 38px;
+}
+.klaben-crm-import .button:hover { background: #eef5ff; color: #17457d; border-color: #b4c9e8; }
+.klaben-crm-import .dashicons { font-size: 16px; height: 16px; width: 16px; }
+.klaben-crm-tools {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+  padding: 17px 29px; border-top: 1px solid #eff2f7; background: #fafbfd;
+}
+.klaben-crm-search { position: relative; flex: 1 1 260px; max-width: 425px; }
+.klaben-crm-search .dashicons { position: absolute; left: 12px; top: 10px; font-size: 18px; height: 18px; width: 18px; color: #7f91a6; pointer-events: none; }
+.klaben-crm-dashboard .klaben-crm-search input[type='search'] {
+  display: block; width: 100%; max-width: none; min-height: 39px;
+  padding: 8px 14px 8px 39px; border: 1px solid #dbe4ee;
+  border-radius: 8px; background: #fff; font-size: 12.5px; color: var(--kc-ink);
+}
+.klaben-crm-dashboard .klaben-crm-tools select { min-height: 39px; max-width: 200px; border-color: #dbe4ee; border-radius: 8px; background-color: #fff; color: #334b64; font-size: 12px; }
+.klaben-crm-visible-count { color: #77889b; font-size: 12px; margin-left: auto; white-space: nowrap; }
+.klaben-crm-table-scroll { overflow-x: auto; }
+.klaben-crm-table { width: 100%; border-collapse: collapse; text-align: left; }
+.klaben-crm-table th {
+  padding: 15px 16px; font-size: 10.5px; color: #7b8c9e;
+  text-transform: uppercase; letter-spacing: .07em; font-weight: 750;
+  background: #fff; border-top: 1px solid #edf1f6; border-bottom: 1px solid #edf1f6;
+  white-space: nowrap;
+}
+.klaben-crm-table th:first-child, .klaben-crm-table td:first-child { padding-left: 29px; }
+.klaben-crm-table th:last-child, .klaben-crm-table td:last-child { padding-right: 29px; }
+.klaben-crm-table td { padding: 20px 16px; vertical-align: top; border-bottom: 1px solid #eef2f6; font-size: 12px; line-height: 1.55; color: #3d5167; min-width: 100px; }
+.klaben-crm-table tbody tr:last-child td { border-bottom: 0; }
+.klaben-crm-table tbody tr:hover { background: #fbfdff; }
+.klaben-crm-table tbody tr[hidden] { display: none; }
+.klaben-crm-table td:first-child { min-width: 204px; }
+.klaben-crm-type-icon { float: left; color: #286bc5; background: #eff5fe; width: 31px; height: 31px; padding: 7px; border-radius: 8px; font-size: 17px; margin-right: 9px; }
+.klaben-crm-table-title { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.klaben-crm-table-title strong { color: #172d47; font-size: 12.5px; font-weight: 750; }
+.klaben-crm-table-title a { font-size: 11.5px; color: #3d73b9; text-decoration: none; }
+.klaben-crm-table-title a:hover { color: #17539e; text-decoration: underline; }
+.klaben-crm-vehicle { color: #1e3a59 !important; font-weight: 650; min-width: 160px !important; }
+.klaben-crm-contact { min-width: 195px !important; overflow-wrap: anywhere; }
+.klaben-crm-detail { min-width: 145px !important; max-width: 270px; overflow-wrap: anywhere; }
+.klaben-crm-workflow { min-width: 215px !important; }
+.klaben-crm-status { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 750; padding: 4px 9px; border-radius: 999px; margin-bottom: 10px; background: #edf3fc; color: #3765a5; }
+.klaben-crm-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.klaben-crm-status--nieuw { color: #9b6b0a; background: #fff4d8; }
+.klaben-crm-status--contact_opnemen { color: #8654bd; background: #f3ebfc; }
+.klaben-crm-status--in_behandeling { color: #3266c0; background: #eaf1ff; }
+.klaben-crm-status--afgerond { color: #16835a; background: #e6f6ee; }
+.klaben-crm-workflow form { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; }
+.klaben-crm-dashboard .klaben-crm-workflow select { font-size: 11px; min-width: 0; max-width: 140px; min-height: 32px; border-color: #d9e3ef; border-radius: 6px; color: #38516c; }
+.klaben-crm-dashboard .klaben-crm-workflow .button { font-size: 11px; border-color: #d6e3f4; color: #2861aa; border-radius: 6px; min-height: 31px; }
+.klaben-crm-sync { min-width: 130px !important; color: #7d8b9c !important; font-size: 11.5px !important; white-space: nowrap; }
+.klaben-crm-sync-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #b8c2cc; margin-right: 7px; vertical-align: middle; }
+.klaben-crm-ticket { display: block; margin-top: 5px; font-size: 10px; }
+.klaben-crm-time { white-space: nowrap; color: #8492a2 !important; font-size: 11px !important; }
+.klaben-crm-no-results { padding: 42px 20px; text-align: center; color: #72849b; background: #fafbfd; font-size: 13px; }
+.klaben-crm-no-results[hidden] { display: none; }
+.klaben-crm-empty { text-align: center; padding: 56px 20px 64px; background: #fbfcfe; border-top: 1px solid #edf1f6; }
+.klaben-crm-empty .dashicons { color: #8eaed3; font-size: 30px; width: 30px; height: 30px; }
+.klaben-crm-empty h3 { font-size: 17px; color: #213b57; margin: 14px 0 8px; }
+.klaben-crm-empty p { max-width: 440px; margin: 0 auto; line-height: 1.7; color: var(--kc-muted); }
+.klaben-crm-panel-bottom { padding: 16px 29px; border-top: 1px solid #edf1f6; background: #fafbfd; color: #7b8a9b; font-size: 11px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+.klaben-crm-panel-bottom .dashicons { vertical-align: middle; font-size: 13px; width: 14px; height: 14px; }
+.klaben-crm-footer { margin: 20px 0; text-align: center; font-size: 10px; letter-spacing: .12em; font-weight: 650; color: #98a5b2; }
+.klaben-crm-dashboard .button:focus-visible, .klaben-crm-dashboard input:focus-visible, .klaben-crm-dashboard select:focus-visible { outline: 2px solid #377cda; outline-offset: 2px; box-shadow: none; }
+@media (max-width: 1100px) {
+  .klaben-crm-hero { flex-direction: column; }
+  .klaben-crm-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .klaben-crm-table { min-width: 1130px; }
+  .klaben-crm-panel-head { align-items: flex-start; }
+}
+@media (max-width: 782px) {
+  .klaben-crm-dashboard { margin: 12px 12px 40px 0; }
+  .klaben-crm-hero { padding: 26px 22px; min-height: 0; }
+  .klaben-crm-metrics { gap: 10px; margin: 12px 0; }
+  .klaben-crm-metric { min-height: 114px; padding: 16px; }
+  .klaben-crm-metric-label { font-size: 11px; padding-right: 28px; }
+  .klaben-crm-metric-icon { right: 14px; top: 14px; }
+  .klaben-crm-metric-number { font-size: 30px; }
+  .klaben-crm-panel-head { flex-direction: column; padding: 23px 18px; }
+  .klaben-crm-tools { padding: 15px 18px; }
+  .klaben-crm-search { max-width: none; }
+  .klaben-crm-visible-count { margin-left: 0; }
+  .klaben-crm-panel-bottom { padding: 16px 18px; flex-direction: column; align-items: flex-start; }
+}

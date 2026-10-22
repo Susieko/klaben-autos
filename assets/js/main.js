@@ -179,11 +179,33 @@ document.addEventListener("DOMContentLoaded", () => {
         let imageInterval = null;
         let fadeTimeout = null;
 
-        // Load all angles beforehand to prevent flashing.
-        images.forEach((imageUrl) => {
-            const preloadedImage = new Image();
-            preloadedImage.src = imageUrl;
-        });
+        // Keep additional angles off the network until the visitor interacts.
+        // First hovered angle is awaited so the initial transition stays smooth.
+        let isHovering = false;
+        let firstPreviewPromise = null;
+        let remainingPreloaded = false;
+
+        const preloadFirstPreview = () => {
+            if (firstPreviewPromise) return firstPreviewPromise;
+
+            firstPreviewPromise = new Promise((resolve) => {
+                const preview = new Image();
+                preview.onload = resolve;
+                preview.onerror = resolve;
+                preview.src = images[1];
+                if (preview.complete) resolve();
+            });
+            return firstPreviewPromise;
+        };
+
+        const preloadRemainingAngles = () => {
+            if (remainingPreloaded) return;
+            remainingPreloaded = true;
+            images.slice(2).forEach((imageUrl) => {
+                const preview = new Image();
+                preview.src = imageUrl;
+            });
+        };
 
         const showImage = (index) => {
             window.clearTimeout(fadeTimeout);
@@ -202,18 +224,19 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         image.addEventListener("mouseenter", () => {
-            if (imageInterval !== null) {
-                return;
-            }
+            isHovering = true;
+            if (imageInterval !== null) return;
 
-            showNextImage();
-
-            imageInterval = window.setInterval(() => {
+            preloadFirstPreview().then(() => {
+                if (!isHovering || imageInterval !== null) return;
+                preloadRemainingAngles();
                 showNextImage();
-            }, 950);
+                imageInterval = window.setInterval(showNextImage, 950);
+            });
         });
 
         image.addEventListener("mouseleave", () => {
+            isHovering = false;
             window.clearInterval(imageInterval);
             window.clearTimeout(fadeTimeout);
 

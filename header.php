@@ -9,6 +9,31 @@
         content="width=device-width, initial-scale=1"
     >
 
+    <?php
+    // Lightweight descriptions for this self-contained portfolio theme.
+    // Defer to established SEO plugins if one is installed.
+    if (!defined('WPSEO_VERSION') && !defined('RANK_MATH_VERSION')) {
+        $klaben_descriptions = [
+            'autos' => 'Bekijk de collectie fictieve occasions van KLABEN Autos. Vergelijk modellen, prijzen en specificaties in deze interactieve portfolio-demo.',
+            'auto-verkopen' => 'Ontdek het verkoopproces van KLABEN Autos: kentekeninvoer, een interactieve voertuigvragenlijst en een fictieve taxatie.',
+            'financiering' => 'Bereken een indicatief maandbedrag voor een occasion met de interactieve financieringscalculator van KLABEN Autos. Geen kredietaanbod.',
+            'nieuws' => 'Ontdek het KLABEN Journal: verhalen, nieuws en inspiratie over auto’s, rijden en het kiezen van jouw volgende occasion.',
+        ];
+        if (is_front_page()) {
+            $klaben_description = 'Ontdek zorgvuldig geselecteerde occasions bij KLABEN Autos. Bekijk de collectie en bereken een indicatief maandbedrag in onze fictieve portfolio-demo.';
+        } elseif (is_page()) {
+            $klaben_description = $klaben_descriptions[get_post_field('post_name', get_queried_object_id())] ?? '';
+        } elseif (is_singular('post')) {
+            $klaben_description = wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 26, '…');
+        } else {
+            $klaben_description = '';
+        }
+        if ($klaben_description !== '') {
+            echo '<meta name="description" content="' . esc_attr($klaben_description) . '">' . "\n";
+        }
+    }
+    ?>
+
     <?php wp_head(); ?>
 </head>
 
@@ -27,7 +52,7 @@
             <img
                 class="site-brand__logo"
                 src="<?php echo esc_url(
-                    get_theme_file_uri('/assets/images/logo/klaben-logo.png')
+                    get_theme_file_uri('/assets/images/logo/klaben-logo.webp')
                 ); ?>"
                 alt="KLABEN Autos"
             >

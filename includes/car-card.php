@@ -4,33 +4,9 @@ if (!isset($car) || !is_array($car)) {
     return;
 }
 
-$image_files = $car['images'] ?? [$car['image']];
-$car_images = [];
-
-foreach ($image_files as $image_file) {
-    $image_relative_path = '/assets/images/cars/' . $image_file;
-    $image_absolute_path = get_theme_file_path($image_relative_path);
-
-    if (file_exists($image_absolute_path)) {
-        $car_images[] = get_theme_file_uri($image_relative_path);
-    }
-}
-
-if (!empty($car_images)) {
-    $car_image = $car_images[0];
-} else {
-    $car_image = get_theme_file_uri(
-        '/assets/images/hero/klaben-hero.png'
-    );
-
-    $car_images = [$car_image];
-}
-
-$car_url = add_query_arg(
-    'auto',
-    $car['slug'],
-    home_url('/autos/')
-);
+$car_images = klaben_vehicle_images($car);
+$car_image = $car_images[0];
+$car_url = klaben_vehicle_url($car);
 
 ?>
 
@@ -52,6 +28,8 @@ $car_url = add_query_arg(
     >
 <img
     class="car-card__image car-hover-image"
+    loading="lazy"
+    decoding="async"
     src="<?php echo esc_url($car_image); ?>"
     data-car-images="<?php echo esc_attr(
         wp_json_encode($car_images)
@@ -59,6 +37,8 @@ $car_url = add_query_arg(
     alt="<?php echo esc_attr(
         $car['brand'] . ' ' . $car['model']
     ); ?>"
+    loading="lazy"
+    decoding="async"
 >
 
 <?php if ($car['brand'] === 'KLABEN'): ?>

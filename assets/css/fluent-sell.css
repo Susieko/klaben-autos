@@ -1,0 +1,49 @@
+/* KLABEN x Fluent Forms Free (#4) — preserve the existing selling-page design. */
+#klaben-fluent-sell { max-width: 100%; }
+#klaben-fluent-sell .fluentform,
+#klaben-fluent-sell .fluentform form { color: #eaf2fa; }
+#klaben-fluent-sell .ff-el-group { margin-bottom: 20px; }
+#klaben-fluent-sell .ff-el-input--label { margin-bottom: 9px; }
+#klaben-fluent-sell .ff-el-input--label label {
+  color: #d2e0ed; font: 600 12px/1.55 var(--font-body, Inter, sans-serif);
+}
+#klaben-fluent-sell .ff-el-input--label .ff-el-required { color: #bcdafa; }
+#klaben-fluent-sell .ff-el-form-control {
+  width: 100%; min-height: 48px; border: 1px solid rgba(181,198,218,.25);
+  border-radius: 9px; background: #13212e; color: #f2f7fb;
+  padding: 12px 14px; font: 400 13px/1.6 var(--font-body, Inter, sans-serif);
+  box-shadow: none;
+}
+#klaben-fluent-sell .ff-el-form-control::placeholder { color: #8399ad; opacity: 1; }
+#klaben-fluent-sell textarea.ff-el-form-control { min-height: 118px; resize: vertical; }
+#klaben-fluent-sell select.ff-el-form-control { color-scheme: dark; }
+#klaben-fluent-sell .ff-el-form-control:focus {
+  border-color: #91b8dc; background: #172a3c;
+  outline: 2px solid rgba(145,184,220,.4); outline-offset: 1px;
+}
+#klaben-fluent-sell .ff-el-form-check-label,
+#klaben-fluent-sell .ff-el-form-check-label span { color: #bacbda; font-size: 12px; line-height: 1.7; }
+#klaben-fluent-sell input[type="checkbox"] { accent-color: #7fa9d0; }
+#klaben-fluent-sell .ff-btn-submit {
+  min-height: 48px; padding: 12px 24px; border-radius: 9px;
+  border: 1px solid rgba(180,216,246,.25); background: #6488af;
+  color: #fff; font: 600 12px var(--font-body, Inter, sans-serif);
+  cursor: pointer;
+}
+#klaben-fluent-sell .ff-btn-submit:hover { background: #789dc3; }
+#klaben-fluent-sell .ff-btn-submit:focus-visible { outline: 2px solid #d0e8ff; outline-offset: 3px; }
+#klaben-fluent-sell .ff-message-success {
+  background: #183630; border: 1px solid #538a7b; border-radius: 10px;
+  color: #d8f2e7; padding: 17px 20px; line-height: 1.7;
+}
+#klaben-fluent-sell .ff-el-is-error .text-danger,
+#klaben-fluent-sell .error.text-danger { color: #ffb7bb; }
+#klaben-fluent-sell .ff-el-group .ff-el-help-message { color: #9db2c4; }
+#klaben-fluent-sell .klaben-form-unavailable {
+  padding: 18px; border-radius: 10px; background: #1c2d3c;
+  border: 1px solid rgba(181,198,218,.2); color: #d6e5f3;
+}
+#klaben-fluent-sell .sell-review__notice { max-width: 580px; }
+@media (max-width: 560px) {
+  #klaben-fluent-sell .ff-btn-submit { width: 100%; }
+}

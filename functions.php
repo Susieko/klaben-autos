@@ -1,4 +1,6 @@
 <?php
+// CMS adapter: ACF-powered vehicles with the original PHP demo data as a fallback.
+require_once get_theme_file_path('/includes/vehicle-acf-adapter.php');
 require_once get_theme_file_path('/includes/finance-home-assets.php');
 require_once get_theme_file_path('/includes/sell-review-assets.php');
 require_once get_theme_file_path('/includes/homepage-wheel-pointer-assets.php');
@@ -97,7 +99,9 @@ add_action('after_setup_theme', 'klaben_autos_theme_setup');
  */
 function klaben_get_vehicles(): array
 {
-    return require get_theme_file_path('/data/cars.php');
+    // Only switch to CMS records once there are complete published ACF vehicles.
+    $cms_vehicles = klaben_acf_vehicles();
+    return $cms_vehicles ?: require get_theme_file_path('/data/cars.php');
 }
 
 /** @return string[] */
@@ -105,11 +109,11 @@ function klaben_vehicle_images(array $car): array
 {
     $images = $car['images'] ?? [$car['image'] ?? ''];
     $urls = [];
-    foreach ($images as $filename) {
-        // File names are internal theme data, not user-provided paths.
-        $relative = '/assets/images/cars/' . basename((string) $filename);
-        if (is_file(get_theme_file_path($relative))) {
-            $urls[] = get_theme_file_uri($relative);
+    foreach ($images as $image) {
+        // The adapter supplies WP Media Library URLs; the fallback supplies theme filenames.
+        $url = klaben_resolve_vehicle_image($image);
+        if ($url !== '') {
+            $urls[] = $url;
         }
     }
     return $urls ?: [get_theme_file_uri('/assets/images/hero/klaben-hero.png')];
@@ -162,9 +166,10 @@ function klaben_filter_vehicles(array $cars, array $filters): array
 
 function klaben_enqueue_inventory_assets(): void
 {
-    if (!is_page('autos')) return;
+    if (!is_page('autos') && !is_singular('klaben_auto')) return;
     wp_enqueue_style('klaben-inventory', get_theme_file_uri('/assets/css/inventory.css'), ['klaben-cars'], klaben_autos_asset_version('/assets/css/inventory.css'));
     wp_enqueue_script('klaben-inventory', get_theme_file_uri('/assets/js/inventory.js'), ['klaben-main'], klaben_autos_asset_version('/assets/js/inventory.js'), true);
+    wp_enqueue_style('klaben-vehicle-articles', get_theme_file_uri('/assets/css/vehicle-articles.css'), ['klaben-inventory'], klaben_autos_asset_version('/assets/css/vehicle-articles.css'));
 }
 add_action('wp_enqueue_scripts', 'klaben_enqueue_inventory_assets');
 
@@ -278,3 +283,18 @@ function klaben_enqueue_visual_polish(): void
     );
 }
 add_action('wp_enqueue_scripts', 'klaben_enqueue_visual_polish', 50);
+/** Fluent Forms Free styling only on CMS vehicle detail pages. */
+function klaben_enqueue_vehicle_enquiry_assets(): void
+{
+    if (!is_singular('klaben_auto') || !shortcode_exists('fluentform')) return;
+    wp_enqueue_style(
+        'klaben-vehicle-enquiry',
+        get_theme_file_uri('/assets/css/vehicle-enquiry.css'),
+        ['klaben-inventory'],
+        klaben_autos_asset_version('/assets/css/vehicle-enquiry.css')
+    );
+}
+add_action('wp_enqueue_scripts', 'klaben_enqueue_vehicle_enquiry_assets', 30);
+
+/** KLABEN x Fluent Forms #4 selling integration. */
+require_once get_theme_file_path('/includes/fluent-sell-assets.php');

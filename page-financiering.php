@@ -20,7 +20,7 @@ if ($selected_car === null && $vehicles) {
 }
 $start_price = $selected_car ? (int) $selected_car['price'] : 32950;
 $start_down = min(5000, $start_price);
-$car_image = $selected_car ? klaben_vehicle_images($selected_car)[0] : get_theme_file_uri('/assets/images/cars/mercedes.png');
+$car_image = $selected_car ? klaben_vehicle_images($selected_car)[0] : get_theme_file_uri('/assets/images/cars/mercedes.webp');
 $car_title = $selected_car ? $selected_car['brand'] . ' ' . $selected_car['model'] : 'Jouw droomauto';
 ?>
 <section class="finance-hero finance-hero--cockpit" aria-labelledby="finance-hero-title">
