@@ -10,7 +10,7 @@ KLABEN Autos is a fictional Dutch car dealership concept that I designed and dev
 
 It started as a custom WordPress theme and grew into an exploration of **front-end design, PHP development, WordPress content modelling, form integrations, and backend workflow design**.
 
-> **Project status:** The public GitHub repository currently contains the original custom-theme implementation. The newer **ACF-powered vehicle catalogue, Fluent Forms submissions, and standalone CRM plugin have been implemented and tested in my local WordPress environment**, but their complete source/configuration has not yet been synchronized to this repository. The public demo may therefore differ from the latest local build.
+> **Project status:** The latest theme source, ACF configuration export, and standalone **KLABEN CRM v0.2** plugin source are now included in the repository. Vehicle and enquiry functionality was tested in the local WordPress build; the GitHub integration is awaiting a final end-to-end smoke test before the feature branch is merged. **Fluent Forms itself, the form definitions, local database, uploaded media, and saved enquiries are not bundled here.** The public demo may differ from the newest local build.
 
 ## What I built
 
@@ -57,9 +57,9 @@ The CRM was tested with fictional enquiries: existing entries could be imported,
 - **WordPress & PHP** — custom theme, templates, server-side filtering, WordPress hooks and admin functionality.
 - **JavaScript** — interactive forms, UI behaviour, galleries and financing calculations.
 - **HTML & CSS** — responsive layouts, component styling, accessibility considerations and motion details.
-- **ACF** — editable vehicle data in the expanded local version.
-- **Fluent Forms** — validated demonstration enquiries and stored form entries in the expanded local version.
-- **Custom WordPress plugin** — CRM tracking, admin dashboard, workflow statuses and filters in the expanded local version.
+- **ACF** — editable vehicle data with field/CPT/taxonomy export in `docs/acf-export-2026-10-22.json`.
+- **Fluent Forms** — form #3 (vehicle enquiry) and form #4 (sell-your-car) integrations; form definitions must be configured/imported separately.
+- **Custom WordPress plugin** — CRM tracking, admin dashboard, workflow statuses and filters (`plugins/klaben-crm/`).
 - **Git & GitHub** — iterative development and project documentation.
 
 There is no required Node.js build pipeline for the original theme. This project focuses on custom WordPress/PHP and vanilla front-end development rather than a framework-based interface.
@@ -70,35 +70,40 @@ A few design and engineering decisions shaped the project:
 
 1. **Build the interface first, then connect the content.** The original vehicle catalogue uses a PHP data adapter, which made the templates reusable while the design evolved.
 2. **Make the experience interactive.** Catalogue filtering, detail views, guided form steps and financing calculations are implemented behaviours rather than static mock-ups.
-3. **Keep content editable.** The expanded local build moves vehicle information into WordPress records and ACF fields so it can be managed in the CMS.
+3. **Keep content editable.** Vehicle information lives in WordPress records and ACF fields in the newer CMS workflow so it can be managed in the CMS.
 4. **Connect the front end to an admin workflow.** Fluent Forms submissions feed a lightweight CRM plugin where demo enquiries can be reviewed and tracked.
 5. **Be explicit about prototype boundaries.** The interface demonstrates software behaviour, not real vehicle sales, lending, appraisals or dealer operations.
 
 ## Repository structure
 
-The public repository currently contains the original theme:
+The repository contains the custom theme, local integration source, and setup configuration:
 
 ```text
 klaben-autos/
 ├── front-page.php             # Homepage
 ├── page-autos.php             # Catalogue and vehicle details
-├── page-auto-verkopen.php     # Guided selling demo
+├── single-klaben_auto.php     # ACF-powered vehicle detail page
+├── page-auto-verkopen.php     # Guided selling demo / Fluent Forms integration
 ├── page-financiering.php      # Financing calculator
 ├── page-nieuws.php            # Journal
 ├── single.php                 # Article view
 ├── functions.php              # Theme setup and PHP helpers
-├── includes/                  # Asset loaders and shared logic
+├── includes/                  # ACF adapter, enquiry widget, shared logic
 ├── template-parts/            # Reusable sections
-├── data/cars.php              # Example vehicles in the public version
+├── data/cars.php              # Fallback example vehicles
+├── docs/
+│   ├── acf-export-2026-10-22.json  # CPT, taxonomy, field group
+│   └── SETUP-NOTES.md          # Environment and QA notes
+├── plugins/klaben-crm/        # Standalone CRM source: install separately
 └── assets/
     ├── css/
     ├── js/
     └── images/
 ```
 
-The separate CRM plugin and local WordPress configuration are **not yet included in this tree**. ACF fields, Fluent Forms definitions and saved content live in the local WordPress environment and are not automatically included when exporting only a theme repository.
+The CRM plugin source and ACF content definitions are included, but they do **not** automatically activate when the theme is installed. Copy `plugins/klaben-crm/` into `wp-content/plugins/`, activate it, and import the ACF JSON using **ACF → Tools → Import**. Fluent Forms definitions (IDs #3 and #4 in the local build), saved posts, WordPress Media Library uploads and submissions are not part of the source repository.
 
-## Run the public theme locally
+## Run the theme locally
 
 1. Set up a local WordPress installation, for example with [Local](https://localwp.com/).
 2. Clone this repository into `wp-content/themes/` and activate **KLABEN Autos** under **Appearance → Themes**.
@@ -107,7 +112,7 @@ The separate CRM plugin and local WordPress configuration are **not yet included
 5. Add some WordPress posts to populate the journal. Do not set `nieuws` as the designated WordPress Posts page.
 6. Explore the responsive homepage, catalogue, vehicle detail views, selling journey and financing calculator.
 
-The currently published theme includes example cars in `data/cars.php` and can be explored without installing ACF or Fluent Forms. **Reproducing the newer local ACF + CRM workflow requires the additional plugin and form configuration, which are not yet published here.**
+The theme includes fallback example cars in `data/cars.php` and can be explored without installing ACF or Fluent Forms. To reproduce the newer local ACF + CRM workflow, install ACF and Fluent Forms, import the ACF definitions from `docs/acf-export-2026-10-22.json`, copy `plugins/klaben-crm` to the WordPress plugins directory and activate it, then configure compatible Fluent Forms forms #3 and #4. Form IDs may differ between WordPress installations. Consult `docs/SETUP-NOTES.md` and `plugins/klaben-crm/README.md`.
 
 ## Demo and privacy boundaries
 
@@ -123,7 +128,7 @@ The currently published theme includes example cars in `data/cars.php` and can b
 
 KLABEN began as a visual design challenge and became a much broader full-stack WordPress exercise. I particularly enjoyed connecting the front-end details to useful PHP and WordPress logic: turning a good-looking car page into an editable record, a form into a trackable request, and a basic admin screen into a purposeful CRM dashboard.
 
-The next repository milestone is publishing the latest theme changes, the separate CRM plugin source and a reproducible demonstration configuration.
+The next milestone is reviewing the feature branch, checking the combined ACF/Fluent Forms/CRM workflow in WordPress, and merging the tested source into `main`. A fully portable form export or seeded demo dataset could be added later.
 
 ---
 
