@@ -1,99 +1,131 @@
 # KLABEN Autos
 
-**A cinematic automotive experience, built as a custom WordPress theme.**
+**A custom WordPress automotive experience — from cinematic design to vehicle management and a working enquiry CRM.**
 
-**[🚗 Explore the live demo](https://klaben-autos.freepage.cc/)** · **[View the source code](https://github.com/Susieko/klaben-autos)**
+[**Explore the public demo**](https://klaben-autos.freepage.cc/) · [**Browse the code**](https://github.com/Susieko/klaben-autos)
 
-<img width="1879" height="915" alt="homepage" src="https://github.com/user-attachments/assets/e4ed19ea-e61e-4035-b4fb-3df6f8df622c" />
+<img width="1879" height="915" alt="KLABEN Autos homepage — cinematic automotive design" src="https://github.com/user-attachments/assets/e4ed19ea-e61e-4035-b4fb-3df6f8df622c" />
 
+KLABEN Autos is a fictional Dutch car dealership concept that I designed and developed as a portfolio project. My goal was to build more than an attractive landing page: an automotive website with real interactions, editable vehicle content, meaningful form handling, and an administration workflow.
 
-A fictional Dutch car dealership concept that combines visual storytelling with working browsing, vehicle-detail, selling and financing interactions. Built as a portfolio project to explore the space between interface design and front-end/back-end development.
+It started as a custom WordPress theme and grew into an exploration of **front-end design, PHP development, WordPress content modelling, form integrations, and backend workflow design**.
 
-**Stack:** WordPress · PHP · Vanilla JavaScript · CSS · HTML
+> **Project status:** The public GitHub repository currently contains the original custom-theme implementation. The newer **ACF-powered vehicle catalogue, Fluent Forms submissions, and standalone CRM plugin have been implemented and tested in my local WordPress environment**, but their complete source/configuration has not yet been synchronized to this repository. The public demo may therefore differ from the latest local build.
 
-> **Portfolio prototype, not a real dealership.** Vehicles, prices, valuations and finance examples are illustrative. There are no real listings, sales, loan applications or licence-plate lookups.
+## What I built
 
-## The experience
-
-| Section | What you can explore |
+| Area | Features |
 | --- | --- |
-| **Homepage** | Layered, animated Mercedes hero; responsive vehicle search; featured cars; illustrated process; illustrative monthly-payment calculator. |
-| **Car collection** | Search and filter by vehicle attributes, sort results, explore image galleries and open individual vehicle details. |
-| **Vehicle detail** | Gallery thumbnails, specs, related vehicles and a direct handoff to financing with the chosen vehicle preselected. |
-| **Sell your car** | Dutch licence-plate *format* validation, guided vehicle-information flow, illustrative valuation and a review/demo submission experience. |
-| **Financing** | Interactive payment scenarios driven by purchase price, down payment and term, using a shared JavaScript calculation module. |
-| **Journal** | Editorial article index powered by standard WordPress posts, with categories, pagination and single-article templates. |
+| **Visual experience** | Cinematic hero, refined typography, responsive navigation, motion and polished vehicle cards. |
+| **Vehicle browsing** | Catalogue search and filters, sorting, vehicle detail pages, image galleries, and related vehicle content. |
+| **Selling journey** | Guided vehicle details, input validation, an illustrative valuation experience, and a demonstration enquiry form. |
+| **Financing** | Interactive, illustrative monthly-payment calculations and vehicle-to-financing handoff. |
+| **Editorial content** | WordPress-powered journal with articles, categories and pagination. |
+| **Vehicle management** | ACF-backed vehicle content and editable WordPress vehicle records in the expanded local build. |
+| **Enquiry handling** | Fluent Forms vehicle-information and sell-your-car submissions in the expanded local build. |
+| **Custom CRM** | An admin-only WordPress plugin for viewing and tracking incoming demo enquiries, including saved statuses, search, filters and overview statistics. |
 
-The interface includes responsive navigation, small motion details and reduced-motion handling in relevant interactions.
+### A complete enquiry workflow
 
-## Technology and implementation
+The latest local build connects the customer-facing experience to a WordPress administration workflow:
 
-- **Custom WordPress theme:** page templates in PHP, shared header/footer and reusable template parts.
-- **PHP data adapter:** catalogue filtering and sorting are handled on the server. The example cars currently live in `data/cars.php`.
-- **Vanilla JavaScript:** mobile navigation, card interactions, guided selling steps, galleries and finance controls.
-- **CSS:** custom responsive styling, typography and motion; no mandatory JavaScript build pipeline.
-- **WordPress posts:** the journal uses WordPress queries, categories, post thumbnails and article pages.
-- **Demo-safe submission:** the selling form validates input on the server but does **not** send email, store submissions or process real customer requests.
+```text
+Visitor explores a car or selling form
+                  │
+                  ▼
+           Fluent Forms
+          (forms #3 and #4)
+                  │
+                  ▼
+       WordPress form entries
+                  │
+                  ▼
+        Custom KLABEN CRM
+         ├─ enquiry overview
+         ├─ linked vehicle/details
+         ├─ search and filters
+         ├─ status management
+         └─ summary statistics
+```
 
-### Project structure
+The CRM was tested with fictional enquiries: existing entries could be imported, new submissions appeared automatically, and status changes persisted after refreshing. It stores the **reference to the original Fluent Forms submission and the enquiry workflow status** rather than duplicating the submitted contact details into a second CRM record.
+
+**HubSpot is optional and disabled**; the working WordPress CRM does not depend on a third-party service.
+
+## Technology
+
+- **WordPress & PHP** — custom theme, templates, server-side filtering, WordPress hooks and admin functionality.
+- **JavaScript** — interactive forms, UI behaviour, galleries and financing calculations.
+- **HTML & CSS** — responsive layouts, component styling, accessibility considerations and motion details.
+- **ACF** — editable vehicle data in the expanded local version.
+- **Fluent Forms** — validated demonstration enquiries and stored form entries in the expanded local version.
+- **Custom WordPress plugin** — CRM tracking, admin dashboard, workflow statuses and filters in the expanded local version.
+- **Git & GitHub** — iterative development and project documentation.
+
+There is no required Node.js build pipeline for the original theme. This project focuses on custom WordPress/PHP and vanilla front-end development rather than a framework-based interface.
+
+## Technical approach
+
+A few design and engineering decisions shaped the project:
+
+1. **Build the interface first, then connect the content.** The original vehicle catalogue uses a PHP data adapter, which made the templates reusable while the design evolved.
+2. **Make the experience interactive.** Catalogue filtering, detail views, guided form steps and financing calculations are implemented behaviours rather than static mock-ups.
+3. **Keep content editable.** The expanded local build moves vehicle information into WordPress records and ACF fields so it can be managed in the CMS.
+4. **Connect the front end to an admin workflow.** Fluent Forms submissions feed a lightweight CRM plugin where demo enquiries can be reviewed and tracked.
+5. **Be explicit about prototype boundaries.** The interface demonstrates software behaviour, not real vehicle sales, lending, appraisals or dealer operations.
+
+## Repository structure
+
+The public repository currently contains the original theme:
 
 ```text
 klaben-autos/
-├── front-page.php                 # Home / layered automotive hero
-├── page-autos.php                 # Inventory + vehicle-detail routing
-├── page-auto-verkopen.php         # Guided selling demo
-├── page-financiering.php          # Interactive calculator
-├── page-nieuws.php                # Journal archive
-├── single.php                     # WordPress article template
-├── functions.php                  # Theme setup, assets and helpers
-├── includes/                      # Reusable components and asset loaders
-├── template-parts/                # Homepage and selling sections
-├── data/cars.php                  # Three illustrative vehicles
+├── front-page.php             # Homepage
+├── page-autos.php             # Catalogue and vehicle details
+├── page-auto-verkopen.php     # Guided selling demo
+├── page-financiering.php      # Financing calculator
+├── page-nieuws.php            # Journal
+├── single.php                 # Article view
+├── functions.php              # Theme setup and PHP helpers
+├── includes/                  # Asset loaders and shared logic
+├── template-parts/            # Reusable sections
+├── data/cars.php              # Example vehicles in the public version
 └── assets/
     ├── css/
     ├── js/
     └── images/
 ```
 
-## Run locally
+The separate CRM plugin and local WordPress configuration are **not yet included in this tree**. ACF fields, Fluent Forms definitions and saved content live in the local WordPress environment and are not automatically included when exporting only a theme repository.
 
-You'll need a local WordPress installation (for example, [Local](https://localwp.com/)) and a PHP environment supported by that WordPress version.
+## Run the public theme locally
 
-1. Clone this repository into your WordPress themes directory:
+1. Set up a local WordPress installation, for example with [Local](https://localwp.com/).
+2. Clone this repository into `wp-content/themes/` and activate **KLABEN Autos** under **Appearance → Themes**.
+3. Create pages with the slugs `autos`, `auto-verkopen`, `financiering` and `nieuws`.
+4. Configure a static homepage if needed under **Settings → Reading**.
+5. Add some WordPress posts to populate the journal. Do not set `nieuws` as the designated WordPress Posts page.
+6. Explore the responsive homepage, catalogue, vehicle detail views, selling journey and financing calculator.
 
-   ```bash
-   cd wp-content/themes
-   git clone https://github.com/Susieko/klaben-autos.git
-   ```
+The currently published theme includes example cars in `data/cars.php` and can be explored without installing ACF or Fluent Forms. **Reproducing the newer local ACF + CRM workflow requires the additional plugin and form configuration, which are not yet published here.**
 
-2. In **Appearance → Themes**, activate **KLABEN Autos**.
-3. Create WordPress pages with these **exact slugs**: `autos`, `auto-verkopen`, `financiering` and `nieuws`.
-4. In **Settings → Reading**, set a static homepage if needed for your site setup. WordPress will use `front-page.php` for the front page.
-5. Add standard WordPress posts (ideally with featured images) to populate the journal. Keep `nieuws` as a regular page; **do not** set it as the WordPress “Posts page.”
-6. Open the homepage and test the car catalogue, selling journey, finance calculator and mobile menu.
+## Demo and privacy boundaries
 
-The vehicle catalogue ships with three demo records. You do **not** need ACF, an external vehicle API or a production database import to try the included sample interactions. WordPress itself still needs its normal database.
+**KLABEN Autos is a fictional portfolio project, not a real dealership.** Vehicle listings, prices, valuations and financing examples are illustrative.
 
-## What is simulated?
+- No real vehicle valuation, RDW lookup, loan application, sale or financing offer takes place.
+- The public theme's original selling flow demonstrates validation without creating real leads.
+- The newer local Fluent Forms workflow intentionally creates *test* entries and is not a public customer-contact service.
+- The CRM is administrator-only; sensitive form data remains within the original form-entry system.
+- Screenshots and demonstrations should use fictional or redacted contact data.
 
-This project intentionally separates real UI logic from fictional business operations:
+## What this project taught me
 
-- **Vehicle data:** bundled example cars in `data/cars.php`, not dealer stock or a custom post type.
-- **Licence plates:** syntax/format checking only, **no RDW lookup**.
-- **Valuation:** a guided, illustrative interface, **not a real appraisal**.
-- **Selling form:** server-side validation with a demo response; **no storage, emails or leads**.
-- **Financing:** illustrative amortisation calculations using a **7.9% nominal annual example rate**, **not a quote, lender integration or offer**.
-- **Favourites:** UI interaction only; they are not a persistent account feature.
+KLABEN began as a visual design challenge and became a much broader full-stack WordPress exercise. I particularly enjoyed connecting the front-end details to useful PHP and WordPress logic: turning a good-looking car page into an editable record, a form into a trackable request, and a basic admin screen into a purposeful CRM dashboard.
 
-These boundaries are deliberate so a public demonstration cannot be mistaken for a live dealership or financial service.
-
-## Future development
-
-A logical next step would be moving the vehicle catalogue from the current PHP data adapter to a WordPress custom post type with ACF fields and reusable archive/detail templates. This is **not implemented in the current release**.
-
-The current focus is an approachable, complete front-end experience with working demo interactions and clear technical scope.
+The next repository milestone is publishing the latest theme changes, the separate CRM plugin source and a reproducible demonstration configuration.
 
 ---
 
 **Designed and developed by [Susan Aben](https://github.com/Susieko).**  
-Built as an independent portfolio concept. KLABEN Autos is a fictional brand.
+Independent portfolio project · Fictional brand and vehicles.
