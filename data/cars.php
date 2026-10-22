@@ -15,15 +15,15 @@ return [
     'location' => 'Tilburg',
 
     // Main image used when the page first loads.
-    'image' => 'mercedes.png',
+    'image' => 'mercedes.webp',
 
     // Images used for the hover slideshow.
     'images' => [
-        'mercedes.png',
-        'mercedes2.png',
-        'mercedes3.png',
-        'mercedes4.png',
-        'mercedes5.png',
+        'mercedes.webp',
+        'mercedes2.webp',
+        'mercedes3.webp',
+        'mercedes4.webp',
+        'mercedes5.webp',
     ],
 
     'featured' => true,
@@ -40,11 +40,11 @@ return [
         'transmission' => 'Automaat',
         'body' => 'Hatchback',
         'location' => 'Breda',
-        'image' => 'audi.png',
+        'image' => 'audi.webp',
         'images' => [
-            'audi.png',
-            'audi2.png',
-            'audi3.png',
+            'audi.webp',
+            'audi2.webp',
+            'audi3.webp',
         ],
         'featured' => true,
     ],
@@ -60,11 +60,11 @@ return [
         'transmission' => 'Handgeschakeld',
         'body' => 'Cabriolet',
         'location' => 'Tilburg',
-        'image' => 'klaben.png',
+        'image' => 'klaben.webp',
         'images' => [
-            'klaben.png',
-            'klaben2.png',
-            'klaben3.png',
+            'klaben.webp',
+            'klaben2.webp',
+            'klaben3.webp',
         ],
         'featured' => true,
     ],

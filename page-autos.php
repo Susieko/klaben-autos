@@ -1,7 +1,7 @@
 <?php
 /**
  * Vehicle inventory and details; maps to a WordPress Page with slug "autos".
- * Phase 1: uses our existing local demo dataset, no ACF dependency yet.
+ * Uses published ACF vehicles where available, with the existing demo data as fallback.
  */
 $cars = klaben_get_vehicles();
 $requested_slug = isset($_GET['auto']) && is_string($_GET['auto'])

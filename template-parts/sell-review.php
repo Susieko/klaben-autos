@@ -30,5 +30,5 @@
     <button class="sell-review__edit" type="button" data-sell-review-edit aria-expanded="false" aria-controls="sell-vehicle-fields">
         <span aria-hidden="true">✎</span> Gegevens aanpassen
     </button>
-    <p class="sell-review__notice">Je gegevens blijven alleen in deze browserpagina tijdens de demo. Er wordt niets verzonden of opgeslagen via deze controle.</p>
+    <p class="sell-review__notice">Dit overzicht slaat zelf niets op. Alleen wanneer je een testaanvraag verstuurt, wordt deze in de lokale WordPress-database opgeslagen.</p>
 </section>

@@ -1,0 +1,11 @@
+/* KLABEN: compact related journal articles on the vehicle-detail page. */
+.vehicle-articles { margin: 70px 0 95px; }
+.vehicle-articles__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.vehicle-article { display: flex; flex-direction: column; min-width: 0; overflow: hidden; text-decoration: none; color: #f5f7fa; background: #121e29; border: 1px solid rgba(181,198,218,.16); border-radius: 16px; transition: border-color .2s ease, transform .2s ease; }
+.vehicle-article:hover, .vehicle-article:focus-visible { border-color: rgba(181,198,218,.5); transform: translateY(-3px); }
+.vehicle-article img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.vehicle-article__content { display: grid; align-content: start; gap: 11px; padding: 22px; }
+.vehicle-article__content strong { font-family: var(--font-heading, sans-serif); font-size: 19px; line-height: 1.35; }
+.vehicle-article__link { font-size: 13px; color: #b9cee1; font-weight: 600; }
+@media (max-width: 760px) { .vehicle-articles { margin: 55px 0 70px; } .vehicle-articles__grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .vehicle-article { transition: none; } .vehicle-article:hover, .vehicle-article:focus-visible { transform: none; } }

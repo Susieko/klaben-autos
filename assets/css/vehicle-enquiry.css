@@ -1,0 +1,39 @@
+/* KLABEN Autos — Fluent Forms Free / vehicle enquiry. Scoped: single vehicle only. */
+.vehicle-enquiry { 
+    display: grid;
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+    gap: clamp(30px, 5vw, 76px);
+    margin-top: 78px;
+    padding: clamp(26px, 4vw, 56px);
+    border: 1px solid rgba(173, 194, 216, .16);
+    border-radius: 20px;
+    background: linear-gradient(130deg, #172735 0%, #111e2a 53%, #0e1a25 100%);
+    scroll-margin-top: 115px;
+}
+.vehicle-enquiry__intro h2 { margin: 10px 0 20px; max-width: 420px; font: 600 clamp(27px, 3vw, 38px)/1.22 var(--font-heading); letter-spacing: -.035em; }
+.vehicle-enquiry__intro > p:not(.inventory-eyebrow) { max-width: 390px; color: #b2c1d0; line-height: 1.85; font-size: 13px; }
+.vehicle-enquiry__vehicle { display: grid; gap: 7px; padding: 19px 20px; margin: 32px 0 21px; background: rgba(10, 19, 29, .43); border: 1px solid rgba(170, 197, 219, .15); border-radius: 12px; }
+.vehicle-enquiry__vehicle span { color: #91a9bf; font-size: 10px; font-weight: 700; letter-spacing: .13em; }
+.vehicle-enquiry__vehicle strong { color: #f0f5fa; font-size: 14px; }
+.vehicle-enquiry__vehicle small { color: #a6b8cb; font-size: 12px; }
+.vehicle-enquiry__intro .vehicle-enquiry__disclaimer { color: #94a4b3 !important; font-size: 11px !important; line-height: 1.7; }
+.vehicle-enquiry__jump { display: flex; gap: 12px; justify-content: center; align-items: center; width: 100%; margin-top: 12px; padding: 13px 18px; border: 1px solid rgba(172, 200, 229, .36); border-radius: 8px; color: #dceafa; text-decoration: none; font-weight: 600; font-size: 12px; background: rgba(108, 148, 187, .08); transition: background .2s ease, border-color .2s ease; }
+.vehicle-enquiry__jump:hover { color: #fff; border-color: rgba(185, 211, 240, .65); background: rgba(108, 148, 187, .19); }
+.vehicle-enquiry__form { min-width: 0; }
+.vehicle-enquiry .fluentform .ff-el-group { margin-bottom: 19px; }
+.vehicle-enquiry .fluentform .ff-el-input--label label { color: #dce6ef; font-size: 12px; font-weight: 600; }
+.vehicle-enquiry .fluentform .ff-el-form-control { width: 100%; min-height: 45px; padding: 12px 14px; border: 1px solid rgba(175, 202, 224, .24); border-radius: 9px; background: #0e1924; color: #eef5fa; box-shadow: none; font: 13px var(--font-body); }
+.vehicle-enquiry .fluentform .ff-el-form-control::placeholder { color: #8798a9; opacity: 1; }
+.vehicle-enquiry .fluentform .ff-el-form-control:focus { border-color: #96b5d5; box-shadow: 0 0 0 2px rgba(114, 151, 189, .2); outline: none; }
+.vehicle-enquiry .fluentform textarea.ff-el-form-control { min-height: 118px; resize: vertical; }
+.vehicle-enquiry .fluentform input[type="checkbox"] { accent-color: #89aacc; }
+.vehicle-enquiry .fluentform .ff-el-form-check-label,
+.vehicle-enquiry .fluentform .ff-el-form-check-label span { color: #b4c3d0; font-size: 12px; line-height: 1.7; }
+.vehicle-enquiry .fluentform .ff-btn-submit { padding: 13px 22px; border: 1px solid rgba(186, 207, 229, .2); border-radius: 9px; background: #678bb4; color: #fff; font-size: 13px; font-weight: 700; min-height: 45px; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+.vehicle-enquiry .fluentform .ff-btn-submit:hover { background: #779ec9; transform: translateY(-1px); }
+.vehicle-enquiry .fluentform .ff-el-is-error .ff-el-form-control { border-color: #e9a3a3; }
+.vehicle-enquiry .fluentform .ff-el-is-error .error { color: #ffb2b2; }
+.vehicle-enquiry .fluentform .ff-message-success { color: #daf1df; background: rgba(94, 163, 117, .14); border: 1px solid rgba(142, 204, 157, .35); border-radius: 10px; padding: 16px; }
+@media (max-width: 900px) { .vehicle-enquiry { grid-template-columns: 1fr; gap: 24px; } .vehicle-enquiry__intro h2 { max-width: none; } .vehicle-enquiry__vehicle { margin-top: 24px; } }
+@media (max-width: 480px) { .vehicle-enquiry { margin-top: 54px; padding: 22px 18px; border-radius: 14px; } .vehicle-enquiry .fluentform .ff-btn-submit { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .vehicle-enquiry__jump, .vehicle-enquiry .fluentform .ff-btn-submit { transition: none; } }

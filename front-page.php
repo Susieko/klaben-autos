@@ -20,7 +20,7 @@ wp_enqueue_style(
 
 get_header();
 
-$cars = require get_theme_file_path('/data/cars.php');
+$cars = klaben_get_vehicles();
 
 $featured_cars = array_filter(
     $cars,
@@ -31,7 +31,7 @@ $featured_cars = array_filter(
 
 $featured_cars = array_slice($featured_cars, 0, 3);
 $hero_car = $featured_cars ? array_values($featured_cars)[0] : null;
-$hero_car_link = $hero_car ? add_query_arg('auto', $hero_car['slug'], home_url('/autos/')) : '';
+$hero_car_link = $hero_car ? klaben_vehicle_url($hero_car) : '';
 
 // Keep the search choices in sync with the vehicles actually in the catalogue.
 $hero_brands = array_unique(array_column($cars, 'brand'));
@@ -44,7 +44,7 @@ sort($hero_fuels, SORT_NATURAL | SORT_FLAG_CASE);
 sort($hero_transmissions, SORT_NATURAL | SORT_FLAG_CASE);
 
 $hero_image = get_theme_file_uri(
-    '/assets/images/hero/klaben-background-v32.png'
+    '/assets/images/hero/klaben-background-v32.webp'
 );
 $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer.png');
 
@@ -67,6 +67,7 @@ $hero_car_cutout = get_theme_file_uri('/assets/images/hero/klaben-mercedes-layer
             width="1672"
             height="941"
             decoding="async"
+            fetchpriority="high"
         >
         <!-- Contact shadows and a dim wet-floor reflection follow the scenery. -->
         <img

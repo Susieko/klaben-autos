@@ -3,16 +3,16 @@
 
 // Existing vehicle form and live preview
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("klaben-sell-form");
+  const form = document.querySelector("#klaben-fluent-sell form");
   if (!form) return;
 
   const fields = {
-    brand: form.querySelector("#sell-brand"),
-    model: form.querySelector("#sell-model"),
-    year: form.querySelector("#sell-year"),
-    mileage: form.querySelector("#sell-mileage"),
-    fuel: form.querySelector("#sell-fuel"),
-    transmission: form.querySelector("#sell-transmission"),
+    brand: form.elements.namedItem("brand"),
+    model: form.elements.namedItem("model"),
+    year: form.elements.namedItem("year"),
+    mileage: form.elements.namedItem("mileage"),
+    fuel: form.elements.namedItem("fuel"),
+    transmission: form.elements.namedItem("transmission"),
   };
 
   const targets = {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     targets.transmission.textContent = text("transmission") || "—";
 
     const complete = validKeys.filter(
-      (key) => fields[key].checkValidity() && text(key) !== ""
+      (key) => fields[key]?.checkValidity() && text(key) !== ""
     ).length;
 
     targets.completed.textContent =
@@ -153,9 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById(
     "klaben-valuation-form"
   );
-  const application = document.getElementById(
-    "klaben-sell-form"
-  );
+  const application = document.querySelector("#klaben-fluent-sell form");
 
   if (!section || !form || !application) return;
 
